@@ -1,7 +1,7 @@
 {
-  "name": "material-dashboard-react",
+  "name": "rover-dashboard-react",
   "version": "1.4.1",
-  "description": "Material Dashboard React. Coded by Creative Tim",
+  "description": "Rover Dashboard React.",
   "private": false,
   "main": "dist/index.js",
   "dependencies": {
@@ -38,7 +38,7 @@
     "url": "git+https://github.com/creativetimofficial/material-dashboard-react.git"
   },
   "keywords": [],
-  "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
+  "author": "Rovere",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-dashboard-react/issues"
