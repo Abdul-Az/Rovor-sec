@@ -38,12 +38,28 @@ import {
   completedTasksChart
 } from "variables/charts";
 
+// import firebase from "firebase/app";
+// import {DB_CONFIG} from "../Config";
+// import {FirebaseDB} from "./firebasedb";
+
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
+import Totalusers from "./totalusers";
 
 class Dashboard extends React.Component {
   state = {
     value: 0
   };
+  
+//  var database = firebase.database();
+
+//   var ref = database.ref('users');
+//   ref.on('users' , gotData)
+  
+//   function gotData(users) {
+//     var userslist = users.val();
+//     return total =  Object.keys(userslist).length;
+//   };
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -53,6 +69,7 @@ class Dashboard extends React.Component {
   };
   render() {
     const { classes } = this.props;
+
     return (
       <div>
         <GridContainer>
@@ -102,7 +119,7 @@ class Dashboard extends React.Component {
                 <CardIcon color="danger">
                   <Icon>info_outline</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Fixed Issues</p>
+                <p className={classes.cardCategory}>Unsafe Riders</p>
                 <h3 className={classes.cardTitle}>75</h3>
               </CardHeader>
               <CardFooter stats>
@@ -119,8 +136,8 @@ class Dashboard extends React.Component {
                 <CardIcon color="info">
                   <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
+                <p className={classes.cardCategory}>Users</p>
+                <h3 className={classes.cardTitle}><Totalusers /></h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
