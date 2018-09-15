@@ -32,6 +32,8 @@ import CardFooter from "components/Card/CardFooter.jsx";
 
 import { bugs, website, server } from "variables/general";
 
+import Totalusers from "./totalusers";
+
 import {
   dailySalesChart,
   emailsSubscriptionChart,
@@ -119,8 +121,8 @@ class Dashboard extends React.Component {
                 <CardIcon color="info">
                   <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
+                <p className={classes.cardCategory}>Users</p>
+                <h3 className={classes.cardTitle}><Totalusers /></h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
