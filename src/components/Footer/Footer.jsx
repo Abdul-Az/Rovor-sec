@@ -25,8 +25,8 @@ function Footer({ ...props }) {
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a href="#aboutus" className={classes.block}>
-                About Us
+              <a href="#portfolio" className={classes.block}>
+                Portfolio
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
@@ -39,9 +39,9 @@ function Footer({ ...props }) {
         <p className={classes.right}>
           <span>
             &copy; {1900 + new Date().getYear()}{" "}
-            <a href="#website" className={classes.a}>
-              Rover Sec
-            </a>, made with love
+            <a href="https://www.creative-tim.com" className={classes.a}>
+              Creative Tim
+            </a>, made with love for a better web
           </span>
         </p>
       </div>

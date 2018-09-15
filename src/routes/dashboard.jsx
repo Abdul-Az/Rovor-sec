@@ -21,7 +21,7 @@ const dashboardRoutes = [
   {
     path: "/dashboard",
     sidebarName: "Dashboard",
-    navbarName: "Rover Sec Dashboard",
+    navbarName: "Material Dashboard",
     icon: Dashboard,
     component: DashboardPage
   },

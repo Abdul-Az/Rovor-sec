@@ -1,7 +1,7 @@
 {
   "name": "rover-dashboard-react",
   "version": "1.4.1",
-  "description": "Rover Dashboard React.",
+  "description": "Rover Dashboard React. Coded by Rover Sec",
   "private": false,
   "main": "dist/index.js",
   "dependencies": {
@@ -13,11 +13,8 @@
     "ajv": "6.5.2",
     "chartist": "0.10.1",
     "classnames": "2.2.6",
-    "express": "^4.16.3",
-    "firebase": "^5.4.2",
     "npm-run-all": "4.1.3",
     "perfect-scrollbar": "1.4.0",
-    "re-base": "^4.0.0",
     "react": "16.4.1",
     "react-chartist": "0.13.1",
     "react-dom": "16.4.1",
@@ -41,7 +38,7 @@
     "url": "git+https://github.com/creativetimofficial/material-dashboard-react.git"
   },
   "keywords": [],
-  "author": "Rovere",
+  "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-dashboard-react/issues"
