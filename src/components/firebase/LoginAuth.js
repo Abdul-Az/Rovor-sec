@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import fire from './config/Fire';
+import fire from './Fire';
 import {Branches , Logout} from './Branches';
-import Login from './Login';
+import Login from '../Login/Login';
 
 class LoginAuth extends Component {
   constructor() {
@@ -30,7 +30,7 @@ class LoginAuth extends Component {
   }
   render() {
     return (
-     <div>{this.state.user ? : ( <Branches/>) : (<Login />)}</div>
+     <div>{this.state.user ?  ( <Branches />) : (<Login />)}</div>
     )}
 }
 

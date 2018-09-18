@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import {  FormGroup, FormControl, ControlLabel,Button } from "react-bootstrap";
 import "./Login.css";
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import LoginAuth from "../firebase/LoginAuth";
+import fire from "../firebase/Fire";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
-
+    this.login = this.login.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     this.state = {
       email: "",
-      password: "",
-      redirect: false 
-    }
+      password: ""
+      // redirect: false 
+    };
     // this.onChange = this.onChange.bind(this);
-    this.loginHandle = this.loginHandle.bind(this);
+    // this.loginHandle = this.loginHandle.bind(this);
   }
 
   validateForm() {
@@ -25,24 +29,35 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-  }
- loginHandle()
-   {
-     this.setState({ redirect:true})
+  login(e) {
+    e.preventDefault();
 
-   }
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  // }
+//  loginHandle()
+//    {
+//      this.setState({ redirect:true})
+
+//    }
+ fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+    }).catch((error) => {
+        console.log(error);
+      });
+  }
+
  
+  
  
   
   render() {
-    if(this.state.redirect){
-      return(<Redirect to={"/BranchLogin"} />)
-    }
+    // {
+  //   if(this.state.redirect){
+  //     return(<Redirect to={"/BranchLogin"} />)
+  //   }
     return (
       <div className="Login">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
             <FormControl
@@ -65,7 +80,7 @@ export default class Login extends Component {
            <Button
             block
             bsSize="large"
-            onClick={this.loginHandle}
+            onClick={this.login}
             disabled={!this.validateForm()}
             type="submit"
           >

@@ -30,7 +30,7 @@ class Logout extends Component {
 }
 
  
-const Branches = (props) => {
+export const Branches = (props) => {
   return (
     <CardDeck>
       <Card>
@@ -77,4 +77,4 @@ const Branches = (props) => {
   );
 };
 
-export default (Branches) (Logout);
+export default Logout;
