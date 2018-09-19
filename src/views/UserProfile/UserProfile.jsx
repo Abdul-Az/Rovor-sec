@@ -17,7 +17,7 @@ import React from 'react';
 // import NavBar from './components/NavBar'
 // import CourseList from './components/CourseList';
 // import Card from "./Organizations";
-import Example from "./Example";
+// import Example from "./Example";
 
 
 
@@ -51,7 +51,7 @@ function UserProfile() {
        {/* <CourseList /> */}
      <GridContainer direction={"column"} justify={"center"} alignItems={"center"}>
         <GridItem xs={12} sm={12} md={12} ls={12} direction={"column"}>
-        <Example />
+        {/* <Example /> */}
           {/* <Card>
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Edit Profile</h4>

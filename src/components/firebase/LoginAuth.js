@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import fire from './Fire';
-import {Branches , Logout} from './Branches';
+import {firebaseApp} from './base';
+import Branches  from './Branches';
 import Login from '../Login/Login';
 
 class LoginAuth extends Component {
@@ -17,20 +17,20 @@ class LoginAuth extends Component {
   }
 
   authListener() {
-    fire.auth().onAuthStateChanged((user) => {
-      console.log(user);
+    firebaseApp.auth().onAuthStateChanged((user) => {
+    //   console.log(user);
       if (user) {
         this.setState({ user });
-        localStorage.setItem('user', user.uid);
+        // localStorage.setItem('user', user.uid);
       } else {
         this.setState({ user: null });
-        localStorage.removeItem('user');
+        // localStorage.removeItem('user');
       }
     });
   }
   render() {
     return (
-     <div>{this.state.user ?  ( <Branches />) : (<Login />)}</div>
+     <div>{this.state.user ?  (<div><Branches /></div>) : (<Login />)}</div>
     )}
 }
 

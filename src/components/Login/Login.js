@@ -1,9 +1,12 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 import {  FormGroup, FormControl, ControlLabel,Button } from "react-bootstrap";
 import "./Login.css";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import LoginAuth from "../firebase/LoginAuth";
-import fire from "../firebase/Fire";
+// import firebaseApp from "../firebase/base";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import {firebaseApp} from '../firebase/base';
 
 export default class Login extends Component {
   constructor(props) {
@@ -40,7 +43,7 @@ export default class Login extends Component {
 //      this.setState({ redirect:true})
 
 //    }
- fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+ firebaseApp.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
     }).catch((error) => {
         console.log(error);
       });
