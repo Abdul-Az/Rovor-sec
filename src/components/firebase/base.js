@@ -1,5 +1,6 @@
 import Rebase from "re-base";
 import firebase from 'firebase';
+import database from "firebase/database";
   // Initialize Firebase
   const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyBy-TpXGI0GU0RoIQ8Mg9u-2PVRoHcu7qs",
@@ -9,7 +10,7 @@ import firebase from 'firebase';
     storageBucket: "sense-54d59.appspot.com",
     messagingSenderId: "441662359325"
   });
-
+ 
   const base = Rebase.createClass(firebaseApp.database());
   // const fire = firebase.initializeApp(config);
  

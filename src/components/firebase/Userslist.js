@@ -1,73 +1,84 @@
-import React, { Component } from 'react';
+import React,{Component} from 'react';
+import {Container, Row,Col, Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import firebase from "firebase";
 import {firebaseApp} from "./base";
-import { Card, CardImg, CardTitle, CardText, CardDeck,
- CardSubtitle, CardBody } from 'reactstrap';
- import 'bootstrap/dist/css/bootstrap.min.css';
- import {
-    Container, Col, Form,
-    FormGroup, Label, Input,
-    Button,
-  } from 'reactstrap';
+import database from "firebase/database";
+import base from "./base";
+import Mumbaiu from "./Mumbaiu";
+
 
 class Userslist extends Component {
     constructor(props) {
         super(props);
-        this.submit = this.submit.bind(this);
+
+        this.state = {
+            Username : []
+        }
     }
 
-    submit() {
-        firebaseApp.auth().submit();
-    }
- 
+
+    componentDidMount(){
+
+        base.fetch('Users', {
+          context: this,
+          then(Users){
+           
+            var Username = Object.keys(Users).map(function(key) {
+                return Users[key]
+            })
+            // var mumbaiArr = Username.filter(function(e1) {
+            //     return e1.organization === "TCSMumbai";
+            // });  
+
+            var result = Username.filter(obj => {
+                return obj.organization === "TCSMumbai"
+              })
+
+              var resultC = Username.filter(obj => {
+                return obj.organization === "TCSChennai"
+              })
+                       
+            //   const org = "TCSMumbai"
+            // const findUsers = Username.map.(function(mumbai , org) {
+            //     if(mumbai.organization ===  org)
+            //     {
+            //         return findUsers
+            //     } 
+            //     })
+            // const org = "TCSMumbai"
+            // const findUsers = function(mumbai , org) {
+            //     const index = mumbai.reduce(function(user , index) {
+            //         return user.organization ===  org 
+            //     })
+            //         return mumbai[index]
+            // } 
+
+            // let printMe = findUsers(Username, org )
+
+            // Username.findIndex(function(mumbai , index) {
+            //     return mumbai.organization === "TCSMumbai"
+            // })
+            //   Users[key] === "TCSMumbai"
+            console.log(resultC)
+
+                this.setState({Username : result})
+        }
+
+          })
+      }
+
+    //   addUsers = (key) => {
+    //       const usders = {...this.state.result}
+    //   }
+    
+
 render() {
   return (
-      <div style={{ alignItems: "center"}}>
-    <CardDeck  style={{ width: '900px', height: '550px', margin: '30px' }}>
-      <Card>
-        <CardImg top width="100%"  style={{ width: '400px', height: '400px' }} src={require("../firebase/TCS-01.png" )} alt="Card image cap" />
-        <CardBody>
-          <CardTitle>TCS Mumbai</CardTitle>
-        <Form className="form">
-        <Col>
-        <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="********"
-              />
-            </FormGroup>
-          </Col>
-          <Button>Submit</Button>
-        </Form>
-        </CardBody>
-      </Card>
-      <Card >
-      <CardImg top width="100%"  style={{ width: '400px', height: '400px' }} src={require("../firebase/TCS-01.png" )} alt="Card image cap" />
-        <CardBody>
-          <CardTitle>TCS Chennai</CardTitle>
-        <Form className="form">
-        <Col>
-        <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="********"
-              />
-            </FormGroup>
-          </Col>
-          <Button>Submit</Button>
-        </Form>
-        </CardBody>
-      </Card>
-    </CardDeck>
-    <Button style={{margin: "20px" }} onClick={this.logout}>Logout</Button>
-    </div>
+     <div>
+         <Mumbaiu users={this.state.Username} />
+     </div>
   );
+};
 }
-}
-// export {Branches};
 export default Userslist;

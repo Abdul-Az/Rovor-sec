@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {firebaseApp} from "./base";
+import { BrowserRouter as Router , NavLink , Redirect } from 'react-router-dom';
 import {  FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import { Card, CardImg, CardTitle, CardText, CardDeck,
  CardSubtitle, CardBody } from 'reactstrap';
@@ -7,18 +8,27 @@ import { Card, CardImg, CardTitle, CardText, CardDeck,
  import {
     Container, Col, Form, Label, Input,Button 
   } from 'reactstrap';
+import Userslist from './Userslist';
 
 class Branches extends Component {
     constructor(props) {
         super(props);
        
         this.state = {
-            password: ""
+            password: "",
+            showComponent: false,
           };
      this.logout = this.logout.bind(this);
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
+     this._onButtonClick = this._onButtonClick.bind(this);
     }
+
+    _onButtonClick() {
+        this.setState({
+          showComponent: true,
+        });
+      }
 
     handleChange(event) {
         this.setState({ password: event.target.value});
@@ -26,7 +36,7 @@ class Branches extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.state.password === "admin" ?
-          alert("matched") : alert(this.state.password)
+        this._onButtonClick() : alert(this.state.password)
     }
 
     logout() {
@@ -34,6 +44,11 @@ class Branches extends Component {
     }
  
 render() {
+     if (this.state.showComponent) {
+        return <Userslist/>;
+    }
+    else
+    {
   return (
       <div style={{ alignItems: "center"}}>
     <CardDeck  style={{ width: '900px', height: '550px', margin: '30px' }}>
@@ -61,7 +76,11 @@ render() {
               />
             </FormGroup>
           </Col>
-          <Button type="submit" >Submit</Button>
+          <Button type="submit">Submit</Button>
+          {/* {this.state.showComponent ?
+           <Userslist /> :
+           null} */}
+
         </Form>
         </CardBody>
       </Card>
@@ -88,6 +107,7 @@ render() {
     <Button style={{margin: "20px" }} onClick={this.logout}>Logout</Button>
     </div>
   );
+}
 }
 }
 // export {Branches};
