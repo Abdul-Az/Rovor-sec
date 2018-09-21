@@ -6,6 +6,7 @@ import {firebaseApp} from "./base";
 import database from "firebase/database";
 import base from "./base";
 import Mumbaiu from "./Mumbaiu";
+import Chennaiu from "./Chennaiu";
 
 
 class Userslist extends Component {
@@ -13,7 +14,8 @@ class Userslist extends Component {
         super(props);
 
         this.state = {
-            Username : []
+            Usernamem : [],
+            Usernamec : [],
         }
     }
 
@@ -62,7 +64,10 @@ class Userslist extends Component {
             //   Users[key] === "TCSMumbai"
             console.log(resultC)
 
-                this.setState({Username : result})
+                this.setState({
+                    Usernamem : result,
+                    Usernamec : resultC,
+                })
         }
 
           })
@@ -76,7 +81,8 @@ class Userslist extends Component {
 render() {
   return (
      <div>
-         <Mumbaiu users={this.state.Username} />
+         <Mumbaiu users={this.state.Usernamem}  />
+         {/* <Chennaiu usersc = {this.state.Usernamec} /> */}
      </div>
   );
 };
