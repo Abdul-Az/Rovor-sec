@@ -16,12 +16,12 @@ class Mumbaiu extends Component {
         //   console.log(username)
         return(
             <div >
-                {username.map(obj => {
-            return <ul > 
-            {/* <Container  > */}
+                <Container  >
                 <Row>
                 <Col sm="3">
-              <Card>
+                {username.map(obj => {
+            return  
+             <Card>
                 <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                 <CardBody>
                   {/* <CardTitle>Total Users  {total} </CardTitle> */}
@@ -30,12 +30,10 @@ class Mumbaiu extends Component {
                   <Button>Button</Button>
                 </CardBody>
               </Card>   
-              </Col>
-              </Row>
-              {/* </Container> */}
-              </ul>
                 })
-                } </div>
+                }
+                </Col>
+              </Row> </Container> </div>
          ) }
 }  
 export default Mumbaiu;
