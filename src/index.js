@@ -11,8 +11,11 @@ import Error from "../src/components/Login/Error";
 
 import indexRoutes from "routes/index.jsx";
 // import App from "./components/App";
+// import Branches from "./components/firebase/Branches";
 // import LoginAuth from "./components/firebase/LoginAuth";
-import Userslist from "./components/firebase/Userslist";
+import Userstable from "./components/firebase/Userstable";
+import LoginAuth from "./components/firebase/LoginAuth";
+// import Userslist from "./components/firebase/Userslist";
 
 
 const hist = createBrowserHistory();
@@ -21,7 +24,7 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
 
-      <Route exact path="/" component={Userslist} />
+      <Route exact path="/" component={LoginAuth} />
        {/* <Route path="*" component={Error} /> */}
        {/* <Route path="/Example" component={Example} /> */}
       {indexRoutes.map((prop, key) => {

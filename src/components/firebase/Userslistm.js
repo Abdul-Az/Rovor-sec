@@ -5,11 +5,13 @@ import firebase from "firebase";
 import {firebaseApp} from "./base";
 import database from "firebase/database";
 import base from "./base";
-import Mumbaiu from "./Mumbaiu";
-import Chennaiu from "./Chennaiu";
+// import Mumbaiu from "./Mumbaiu";
+// import Chennaiu from "./Chennaiu";
+import CustomizedTable from "./Userstable";
+// import { TimeConverter } from './Timeconverter';
 
 
-class Userslist extends Component {
+class Userslistm extends Component {
     constructor(props) {
         super(props);
 
@@ -33,7 +35,7 @@ class Userslist extends Component {
             //     return e1.organization === "TCSMumbai";
             // });  
 
-            var result = Username.filter(obj => {
+            var resultM = Username.filter(obj => {
                 return obj.organization === "TCSMumbai"
               })
 
@@ -62,10 +64,10 @@ class Userslist extends Component {
             //     return mumbai.organization === "TCSMumbai"
             // })
             //   Users[key] === "TCSMumbai"
-            console.log(resultC)
+            // console.log(resultC)
 
                 this.setState({
-                    Usernamem : result,
+                    Usernamem : resultM,
                     Usernamec : resultC,
                 })
         }
@@ -79,12 +81,41 @@ class Userslist extends Component {
     
 
 render() {
+    // <TimeConverter users = {this.state.Usernamem} />
+    
+const UsersRef = firebase.database().ref("Users").on("value", Data => Object.keys(Users).map(function(key){
+    return Data[key]
+}))
+
+console.log(UsersRef)
+
+const TripsRef = firebase.database().ref("trips");
+TripsRef.on("child_added", function(Data){
+    // var uniqueu = Data._.groupBy()
+  var Tripsd = Data.val()
+// console.log(uniqueu)
+})
+
+const TsRef = firebase.database().ref("tripSpeeds");
+TsRef.on("child_added", function(Data){
+    // var uniqueu = Data._.groupBy()
+  var Tsd = Data.val()
+// console.log(uniqueu)
+})
+
+const TrRef = firebase.database().ref("tripRoute");
+TrRef.on("child_added", function(Data){
+    // var uniqueu = Data._.groupBy()
+  var Trd = Data.val()
+// console.log(uniqueu)
+})
+// console.log(firebaseRef)
   return (
      <div>
-         <Mumbaiu users={this.state.Usernamem}  />
+         <CustomizedTable users={this.state.Usernamem}  />
          {/* <Chennaiu usersc = {this.state.Usernamec} /> */}
      </div>
   );
 };
 }
-export default Userslist;
+export default Userslistm;

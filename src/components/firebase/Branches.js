@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {firebaseApp} from "./base";
-import { BrowserRouter as Router , NavLink , Redirect } from 'react-router-dom';
+import { BrowserRouter as Router , NavLink , Link , Redirect} from 'react-router-dom';
 import {  FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import { Card, CardImg, CardTitle, CardText, CardDeck,
  CardSubtitle, CardBody } from 'reactstrap';
@@ -8,7 +8,9 @@ import { Card, CardImg, CardTitle, CardText, CardDeck,
  import {
     Container, Col, Form, Label, Input,Button 
   } from 'reactstrap';
-import Userslist from './Userslist';
+import Userslistm from './Userslistm';
+import Userslistc from './Userslistc';
+// import {  Route, Link } from "react-router-dom";
 
 class Branches extends Component {
     constructor(props) {
@@ -35,8 +37,10 @@ class Branches extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        this.state.password === "admin" ?
-        this._onButtonClick() : alert(this.state.password)
+        this.state.password === "adminm" || "adminc" ?
+        this._onButtonClick() : alert("Wrong password")
+
+
     }
 
     logout() {
@@ -44,9 +48,24 @@ class Branches extends Component {
     }
  
 render() {
-     if (this.state.showComponent) {
-        return <Userslist/>;
-    }
+     if (this.state.showComponent && this.state.password === "adminm")
+      {
+        return (
+        <div>
+          <nav>
+          <Link to = "/Userslistm" ><Userslistm/></Link>
+         </nav> 
+         </div>
+        )}
+    else if (this.state.showComponent && this.state.password === "adminc") 
+    {
+      return (
+        <div>
+          <nav>
+          <Link to = "/Userslistc" ><Userslistc/></Link>
+         </nav> 
+         </div>
+        )}
     else
     {
   return (
@@ -84,22 +103,35 @@ render() {
         </Form>
         </CardBody>
       </Card>
-      <Card >
-      <CardImg top width="100%"  style={{ width: '400px', height: '400px' }} src={require("../firebase/TCS-01.png" )} alt="Card image cap" />
+      <Card>
+        <CardImg top width="100%"  style={{ width: '400px', height: '400px' }} src={require("../firebase/TCS-01.png" )} alt="Card image cap" />
         <CardBody>
           <CardTitle>TCS Chennai</CardTitle>
-        <Form className="form">
+        <Form  onSubmit={this.handleSubmit} className="form">
         <Col>
-       <FormGroup controlId="password" bsSize="large">
+        <FormGroup>
+        {/* <FormGroup controlId="password" bsSize="large">
             <ControlLabel>Password</ControlLabel>
             <FormControl
-            //   value={this.state.password}
+              value={this.state.password}
               onChange={this.handleChange}
               type="password"
-            />
+            /> */}
+              <Label for="examplePassword">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="********"
+                onChange={this.handleChange}
+              />
             </FormGroup>
           </Col>
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
+          {/* {this.state.showComponent ?
+           <Userslist /> :
+           null} */}
+
         </Form>
         </CardBody>
       </Card>

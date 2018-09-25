@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import database from "firebase/database";
   // Initialize Firebase
   const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyBy-TpXGI0GU0RoIQ8Mg9u-2PVRoHcu7qs",
+    apiKey: "AIzaSyDtPmqZu8BkTZ843CK70NHtazRFba3mlXU",
     authDomain: "sense-54d59.firebaseapp.com",
     databaseURL: "https://sense-54d59.firebaseio.com",
     projectId: "sense-54d59",
@@ -12,8 +12,9 @@ import database from "firebase/database";
   });
  
   const base = Rebase.createClass(firebaseApp.database());
-  // const fire = firebase.initializeApp(config);
+  var db = firebaseApp.database();
  
-  export  {firebaseApp};
+  export  {firebaseApp} 
+  export {db};
 
   export default base;
