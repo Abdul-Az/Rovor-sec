@@ -17,6 +17,7 @@ class Userslistm extends Component {
         super(props);
 
         this.state = {
+            Allusers : [],
             Usernamem : [],
             Usernamec : [],
         }
@@ -32,7 +33,7 @@ class Userslistm extends Component {
             var Username = Object.keys(Users).map(function(key) {
                 return Users[key]
             })
-             
+            //  console.log(Username)
 
             var resultM = Username.filter(obj => {
                 return obj.organization === "TCSMumbai"
@@ -41,10 +42,11 @@ class Userslistm extends Component {
               var resultC = Username.filter(obj => {
                 return obj.organization === "TCSChennai"
               })
-                       
+              var result = Username
 
 
                 this.setState({
+                    Allusers : result,
                     Usernamem : resultM,
                     Usernamec : resultC,
                 })
@@ -61,8 +63,7 @@ class Userslistm extends Component {
 render() {
 
 
-const UserRef = firebase.database().ref();
-UserRef.on("value", function(Data){
+const UserRef = firebase.database().ref().on("value", function(Data){
     const tripRoutes = Data.val().tripRoute
     const tripss = Data.val().trips
     const tripSpeedss = Data.val().tripSpeeds
@@ -75,9 +76,12 @@ UserRef.on("value", function(Data){
         
         return obj
     })
-   
-console.log(userresult)
-
+//    console.log(userresult)
+var notrips = userresult.map(user => {
+  return  Object.keys(user.trips).length - 1; 
+  
+  })
+console.log(notrips)
 })
 
 

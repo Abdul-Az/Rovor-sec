@@ -150,8 +150,8 @@ class ListGroupCollapse extends React.Component {
         },
       },
     });
-const sum = Object.keys(this.props.users)
-const total =  sum.length
+// const sum = Object.keys(this.props.users)
+// const total =  sum.length
 const username = this.props.users
 const  lastseen =  username.map(obj => {
     obj.LastSeen })
