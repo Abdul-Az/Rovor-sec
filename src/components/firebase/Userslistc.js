@@ -5,12 +5,14 @@ import firebase from "firebase";
 import {firebaseApp} from "./base";
 import database from "firebase/database";
 import base from "./base";
-import Mumbaiu from "./Mumbaiu";
-import Chennaiu from "./Chennaiu";
-import CustomizedTable from "./Userstable";
+// import Mumbaiu from "./Mumbaiu";
+// import Chennaiu from "./Chennaiu";
+import CustomizedTable,{ListGroupCollapse} from "./Userstable";
+import _ from "underscore";
+// import { TimeConverter } from './Timeconverter';
 
 
-class Userslistc extends Component {
+class Userslistm extends Component {
     constructor(props) {
         super(props);
 
@@ -19,47 +21,17 @@ class Userslistc extends Component {
             Usernamec : [],
         }
     }
-    
 
 
     componentDidMount(){
 
-     
-
-
-        base.fetch('tripSpeeds', {
-            context: this,
-            then(tripSpeeds){
-                var tripS = Object.keys(tripSpeeds).map(function(key) {
-                    return tripSpeeds[key]
-                    console.log(tripS)
-                })
-        }
-    })
-
-        base.fetch('tripRoute', {
-            context: this,
-            then(tripRoute){
-        var tripR = Object.keys(tripRoute).map(function(key) {
-            return tripRoute[key]
-            console.log(tripR)
-        })
-    }
-})
         base.fetch('Users', {
           context: this,
           then(Users){
            
             var Username = Object.keys(Users).map(function(key) {
                 return Users[key]
-                console.log(Username)
             })
-
-           
-
-           
-
-           
             // var mumbaiArr = Username.filter(function(e1) {
             //     return e1.organization === "TCSMumbai";
             // });  
@@ -93,7 +65,7 @@ class Userslistc extends Component {
             //     return mumbai.organization === "TCSMumbai"
             // })
             //   Users[key] === "TCSMumbai"
-            console.log(resultC)
+            // console.log(resultC)
 
                 this.setState({
                     Usernamem : resultM,
@@ -110,12 +82,59 @@ class Userslistc extends Component {
     
 
 render() {
+    // <TimeConverter users = {this.state.Usernamem} />
+    
+// const UsersRef = firebase.database().ref("Users").on("value", Data => Object.keys(Users).map(function(key){
+    // return Users[key]
+// }))
+
+// console.log(UsersRef)
+
+const TripsRef = firebase.database().ref();
+TripsRef.on("value", function(Data){
+    // let result = _.map(Object.keys(Data.val().tripRoute), (userId) => {
+    //     return _.assign(userId, _.find(Data.val().Users, { UserId: userId }))
+    // })
+    const tripRoutes = Data.val().tripRoute
+    const tripss = Data.val().trips
+    const tripSpeedss = Data.val().tripSpeeds
+    let result1 = Object.keys(Data.val().Users).map((userId) => {
+        // console.log(userId)
+        let obj = Data.val().Users[userId]
+        obj.tripRoute = Object.assign({userId},tripRoutes[userId],)
+        obj.trips = Object.assign({userId},tripss[userId],)
+        obj.tripSpeeds = Object.assign({userId},tripSpeedss[userId],)
+        
+        return obj
+    })
+    // var uniqueu = Data._.groupBy()
+//   var Tripsd = Object.keys(Data.val())
+//   var det = Tripsd.flat()
+// console.log(Data.val())
+console.log(result1)
+// console.log(tripRoutes['8saB3qEfo7ZE7nwPJ7vDackj33h1'])
+})
+
+const TsRef = firebase.database().ref("tripSpeeds");
+TsRef.on("child_added", function(Data){
+    // var uniqueu = Data._.groupBy()
+  var Tsd = Data.val()
+// console.log(uniqueu)
+})
+
+const TrRef = firebase.database().ref("tripRoute");
+TrRef.on("child_added", function(Data){
+    // var uniqueu = Data._.groupBy()
+  var Trd = Data.val()
+// console.log(uniqueu)
+})
+// console.log(firebaseRef)
   return (
      <div>
          <CustomizedTable users={this.state.Usernamec}  />
-         {/* <Chennaiu usersc = {this.state.Usernamec} /> */}
+         <ListGroupCollapse  users={this.state.Usernamec} />
      </div>
   );
 };
 }
-export default Userslistc;
+export default Userslistm;

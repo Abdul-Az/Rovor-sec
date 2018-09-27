@@ -55,7 +55,11 @@ const styles = theme => ({
     
 function CustomizedTable(props) {
   
-
+const sum = Object.keys(props.users)
+const total =  sum.length
+const username = props.users
+const  lastseen =  username.map(obj => {
+    obj.LastSeen })
 const { classes } = props;
 
 function TimeConverter(lastseen){
@@ -98,73 +102,25 @@ class ListGroupCollapse extends React.Component {
     super(props);
     
     this.toggle = this.toggle.bind(this);
-   
-
     this.state = {collapse: false};
-
   }
-
-  
   
   toggle() {
     this.setState({ collapse: !this.state.collapse });
   }
   
   render() {
-    function TimeConverter(lastseen){
-    
-      var a = new Date(lastseen * 1000);
-      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      var year = a.getFullYear();
-      var month = months[a.getMonth()];
-      var date = a.getDate();
-      var hour = a.getHours();
-      var min = a.getMinutes();
-      var sec = a.getSeconds();
-      var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-      return time;
-    }
-    
-    const CustomTableCell = withStyles(theme => ({
-      head: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-      },
-      body: {
-        fontSize: 18,
-      },
-    }))(TableCell);
-    
-    const styles = theme => ({
-      root: {
-        width: '100%',
-        marginTop: theme.spacing.unit * 3,
-        overflowX: 'auto',
-      },
-      table: {
-        minWidth: 700,
-      },
-      row: {
-        '&:nth-of-type(odd)': {
-          backgroundColor: theme.palette.background.default,
-        },
-      },
-    });
-const sum = Object.keys(this.props.users)
-const total =  sum.length
-const username = this.props.users
-const  lastseen =  username.map(obj => {
-    obj.LastSeen })
-  // const { classes } = this.props;
     return (
-      <Paper className={this.props.root}>
-      <Table className={this.props.table}>
+      <Paper className={classes.root}>
+      <Table className={classes.table}>
       <TableBody>
         {username.map(obj => {
             return (
-                 <ListGroupItem>
-              <TableRow  onClick={this.toggle}>
-
+                <ListGroupItem>
+              <TableRow className={classes.obj} key={obj.id} onClick={this.toggle}>
+              <Collapse isOpen={this.state.collapse}>User  details</Collapse>
+              </ListGroupItem>
+                {/* <ListGroupCollapse /> */}
                 <CustomTableCell component="th" scope="row">
                   {obj.Username}
                 </CustomTableCell>
@@ -175,13 +131,12 @@ const  lastseen =  username.map(obj => {
                 <CustomTableCell numeric>{obj.Status}</CustomTableCell>
                 <CustomTableCell numeric>{TimeConverter(obj.LastSeen)}</CustomTableCell>
                 <CustomTableCell numeric>{obj.Phone}</CustomTableCell>  
-               </TableRow>
-               <Collapse isOpen={this.state.collapse}>User  details</Collapse>
-               </ListGroupItem>
+              </TableRow>
+              
             );
           })}
        </TableBody>
-       </Table>
+      </Table>
     </Paper>
     );
   }
