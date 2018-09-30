@@ -7,7 +7,7 @@ import database from "firebase/database";
 import base from "./base";
 // import Mumbaiu from "./Mumbaiu";
 // import Chennaiu from "./Chennaiu";
-import CustomizedTable,{ListGroupCollapse} from "./Userstable";
+import CustomizedTable from "./Userstable";
 import _ from "underscore";
 // import { TimeConverter } from './Timeconverter';
 
@@ -132,7 +132,7 @@ TrRef.on("child_added", function(Data){
   return (
      <div>
          <CustomizedTable users={this.state.Usernamec}  />
-         <ListGroupCollapse  users={this.state.Usernamec} />
+         {/* <ListGroupCollapse  users={this.state.Usernamec} /> */}
      </div>
   );
 };

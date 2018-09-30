@@ -5,7 +5,7 @@ import firebase from "firebase";
 import {firebaseApp} from "./base";
 import database from "firebase/database";
 import base from "./base";
-import CustomizedTable,{ListGroupCollapse} from "./Userstable";
+import CustomizedTable from "./Userstable";
 import _ from "underscore";
 
 
@@ -15,7 +15,8 @@ class Allusers extends Component {
         super(props);
 
         this.state = {
-            Allusers : []
+            Allusers : [],
+            ntrips : []
         }
         
     }
@@ -35,9 +36,13 @@ class Allusers extends Component {
                 obj.tripSpeeds = Object.assign({userId},tripSpeedss[userId],)
                 return obj
             })
-
+            var notrips = userresult.map(user => {
+                return  Object.keys(user.trips).length - 1; 
+                
+                })
             this.setState({
-                Allusers : userresult
+                Allusers : userresult,
+                ntrips : notrips
             })
         }.bind(this))
 
@@ -47,14 +52,14 @@ class Allusers extends Component {
  
 render() {
 
-
+    
    
     
 
   return (
      <div>
-         <CustomizedTable users={this.state.Allusers}  />
-         <ListGroupCollapse  users={this.state.Allusers} />
+         <CustomizedTable users={this.state.Allusers} ntrips = {this.state.ntrips} />
+         {/* <ListGroupCollapse  users={this.state.Allusers} /> */}
      </div>
   );
 };

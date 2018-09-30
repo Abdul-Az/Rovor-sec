@@ -7,7 +7,7 @@ import database from "firebase/database";
 import base from "./base";
 // import Mumbaiu from "./Mumbaiu";
 // import Chennaiu from "./Chennaiu";
-import CustomizedTable,{ListGroupCollapse} from "./Userstable";
+import CustomizedTable from "./Userstable";
 import _ from "underscore";
 
 
@@ -88,7 +88,7 @@ console.log(notrips)
   return (
      <div>
          <CustomizedTable users={this.state.Usernamem}  />
-         <ListGroupCollapse  users={this.state.Usernamem} />
+         {/* <ListGroupCollapse  users={this.state.Usernamem} /> */}
      </div>
   );
 };
