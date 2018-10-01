@@ -131,7 +131,7 @@ TrRef.on("child_added", function(Data){
 // console.log(firebaseRef)
   return (
      <div>
-         <CustomizedTable users={this.state.Usernamec}  />
+         {/* <CustomizedTable users={this.state.Usernamec}  /> */}
          {/* <ListGroupCollapse  users={this.state.Usernamec} /> */}
      </div>
   );

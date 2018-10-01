@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ListGroupItem, Collapse } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -14,35 +14,11 @@ import database from "firebase/database";
 import base from "./base";
 import {db} from "./base";
 import { Well } from 'react-bootstrap';
-import {Usertable}  from "./Userstable";
+import CustomizedTable from "./Userstable";
+// import {Usertable}  from "./Userstable";
 // import { Collapse, Button, CardBody, Card } from 'reactstrap';
 // import ListGroupCollapse from "./Viewmore";
-const CustomTableCell = withStyles(theme => ({
-    head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    body: {
-      fontSize: 18,
-    },
-  }))(TableCell);
-  
-  const styles = theme => ({
-    root: {
-      width: '100%',
-      marginTop: theme.spacing.unit * 3,
-      overflowX: 'auto',
-    },
-    table: {
-      minWidth: 700,
-    },
-    row: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.background.default,
-      },
-    },
-  });
-  
+
 
 
 class ListGroupCollapse extends React.Component {
@@ -60,6 +36,33 @@ class ListGroupCollapse extends React.Component {
 
   
   render() {
+
+    const CustomTableCell = withStyles(theme => ({
+        head: {
+          backgroundColor: theme.palette.common.black,
+          color: theme.palette.common.white,
+        },
+        body: {
+          fontSize: 18,
+        },
+      }))(TableCell);
+      
+      const styles = theme => ({
+        root: {
+          width: '100%',
+          marginTop: theme.spacing.unit * 3,
+          overflowX: 'auto',
+        },
+        table: {
+          minWidth: 700,
+        },
+        row: {
+          '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.background.default,
+          },
+        },
+      });
+      
       
     function TimeConverter(lastseen){
     
@@ -87,10 +90,12 @@ class ListGroupCollapse extends React.Component {
 
 
     return (
-        
-      <ListGroupItem>
-        <div>
-        <TableRow  onClick={this.toggle}  >
+
+    
+//  <ListGroupItem >
+       
+     <Fragment>
+        <TableRow className={this.props.row} onClick={this.toggle}  >
         <CustomTableCell component="th" scope="row">
                   {obj.Username}
                 </CustomTableCell>
@@ -103,8 +108,13 @@ class ListGroupCollapse extends React.Component {
                 <CustomTableCell numeric>{obj.Phone}</CustomTableCell>
                </TableRow>
           <Collapse isOpen={this.state.collapse}>sdgsgadfga</Collapse>
-        </div>
-      </ListGroupItem>
+          </Fragment>
+        
+        
+//  </ListGroupItem>
+    
+    
+      
     );
   }
 }

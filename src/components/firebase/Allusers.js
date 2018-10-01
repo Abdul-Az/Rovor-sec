@@ -8,7 +8,7 @@ import base from "./base";
 import CustomizedTable from "./Userstable";
 import _ from "underscore";
 import ListGroupCollapse from "./Viewmore";
-import {Usertable}  from "./Userstable";
+// import {Usertable}  from "./Userstable";
 
 
 class Allusers extends Component {
@@ -61,7 +61,7 @@ render() {
      <div>
          <CustomizedTable users={this.state.Allusers}  />
          {/* <ListGroupCollapse  users={this.state.Allusers} /> */}
-         <Usertable users={this.state.Allusers} />
+         {/* <Usertable users={this.state.Allusers} /> */}
          {/* {console.log(users)} */}
          
      </div>

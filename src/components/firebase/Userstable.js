@@ -50,6 +50,16 @@ const styles = theme => ({
     
 function CustomizedTable(props) {
 
+  // const sum = Object.keys(this.props.users)
+// console.log(sum)
+// const total =  sum.length
+const username = props.users
+// console.log(username)
+const  lastseen =  username.map(obj => {
+    obj.LastSeen })
+    // var  notripss = props.ntrips
+// const { classes } = this.props;
+
 const {classes } = props;
 
   return (
@@ -67,7 +77,19 @@ const {classes } = props;
             <CustomTableCell numeric style={{fontSize: "Large"}}>Phone</CustomTableCell>
           </TableRow>
         </TableHead>
-        
+        <TableBody>
+
+    
+{username.map((obj, key) => {
+
+   
+
+
+    return  <ListGroupCollapse key={obj} item={username[key]} ></ListGroupCollapse>
+      
+  
+  })}
+</TableBody>
       </Table>
     </Paper>
   );
@@ -80,34 +102,57 @@ CustomizedTable.propTypes = {
 export default withStyles(styles)(CustomizedTable);
 
 
-class Usertable extends Component {
+// class Usertable extends Component {
  
-  render() {
+//   render() {
 
-// const sum = Object.keys(this.props.users)
-// console.log(sum)
-// const total =  sum.length
-const username = this.props.users
-// console.log(username)
-const  lastseen =  username.map(obj => {
-    obj.LastSeen })
-    // var  notripss = props.ntrips
-// const { classes } = this.props;
+//     const styles = theme => ({
+//       root: {
+//         width: '100%',
+//         marginTop: theme.spacing.unit * 3,
+//         overflowX: 'auto',
+//       },
+//       table: {
+//         minWidth: 700,
+//       },
+//       row: {
+//         '&:nth-of-type(odd)': {
+//           backgroundColor: theme.palette.background.default,
+//         },
+//       },
+//     });
+    
 
-    return(
+// // const sum = Object.keys(this.props.users)
+// // console.log(sum)
+// // const total =  sum.length
+// const username = this.props.users
+// // console.log(username)
+// const  lastseen =  username.map(obj => {
+//     obj.LastSeen })
+//     // var  notripss = props.ntrips
+// // const { classes } = this.props;
 
+//     return(
+      
+//       <Paper className={this.root}>
+//       <Table className={this.table}>
+//     <TableBody>
 
-      <TableBody>
-        {username.map((obj, key) => {
+    
+//         {username.map((obj, key) => {
 
            
 
 
-            return  <ListGroupCollapse key={obj} item={username[key]} ></ListGroupCollapse>
+//             return  <ListGroupCollapse key={obj} item={username[key]} ></ListGroupCollapse>
               
           
-          })}
- </TableBody>
-    )}
-        }
-export {Usertable}
+//           })}
+//      </TableBody>
+//     </Table>
+//     </Paper>
+
+//     )}
+//         }
+// export {Usertable}
