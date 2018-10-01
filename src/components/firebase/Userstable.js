@@ -1,4 +1,4 @@
-import React from 'react';
+import  React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -12,8 +12,9 @@ import {firebaseApp} from "./base";
 import database from "firebase/database";
 import base from "./base";
 import {db} from "./base";
-// import {TimeConverter} from "./Timeconverter";
-import Viewmore from "./Viewmore";
+import { Well } from 'react-bootstrap';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import ListGroupCollapse from "./Viewmore";
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -43,61 +44,14 @@ const styles = theme => ({
 
 
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-  id += 1;
-  return { id, name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-// var test = db.ref('trips').numChildren()
-// console.log(test)
-// firebase.database().ref('trips').child("tripAvgSpeed").once('value').then(function(snapshot){
-//     // var noTrips=0, maxSpeed=0, totalDistance=0, totalDuration=0, avgSpeed=0;
-//     // var indiSpeed=0, indiDistance=0, indiDuration=0;
-//     snapshot.forEach(function(snap){
-//         var dateData=snap.child("tripdate").val();
-//         // console.log(dateData)
-//     })
-// });
-// const sum = Object.keys(props.users)
-//     const total =  sum.length
-//     const username = props.users
-//     const  lastseen =  username.map(obj => {
-//         obj.LastSeen })
 
 
     
 function CustomizedTable(props) {
-  
-const sum = Object.keys(props.users)
-const total =  sum.length
-const username = props.users
-const  lastseen =  username.map(obj => {
-    obj.LastSeen })
-    var  notripss = props.ntrips
-const { classes } = props;
-// console.log(notripss)
-function TimeConverter(lastseen){
-    
-    var a = new Date(lastseen * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    return time;
-  }
-//   console.log(TimeConverter(lastseen));
+
+const {classes } = props;
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -113,46 +67,7 @@ function TimeConverter(lastseen){
             <CustomTableCell numeric style={{fontSize: "Large"}}>Phone</CustomTableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-      {/* {console.log(JSON.stringify(username))} */}
-        {username.map((obj, key) => {
-
-           var allmaxspeed =  Object.values(obj.tripSpeeds).map(value => { 
-            let { userId, ...y} = obj.tripSpeeds
-            return  Object.values(y).map(s => {                   
-            return Object.values(s).reduce((acc, t) => acc = acc > t.speed ? acc : t.speed, 0) })}) 
-
-          var  tripmaxspeed =  Object.values(allmaxspeed).reduce((acc, t) => acc = acc > t ? acc : t, 0)
-         var overalltripmax =  Object.values(tripmaxspeed).reduce((acc, t) => acc = acc > t ? acc : t, 0)
-
-
-            return (
-              <TableRow className={classes.obj} key={obj.id}>
-              {/* {console.log(key)} */}
-              {/* <Viewmore /> */}
-                <CustomTableCell component="th" scope="row">
-                  {obj.Username}
-                </CustomTableCell>
-                <CustomTableCell numeric>{obj.gender}</CustomTableCell>
-                
-                
-                <CustomTableCell numeric>{overalltripmax}</CustomTableCell>
-                {/* <CustomTableCell numeric>{console.log(Object.keys(obj.tripSpeeds).map(value => {
-                  {console.log(obj.tripSpeeds[value].speed[value])}
-                  
-                  if(obj.tripSpeeds[value].hasOwnProperty(value.speed[value])) {
-                    {console.log(value.speed[value])}
-                   return obj.tripSpeeds[value].speed[value]}}))}
-                   </CustomTableCell> */}
-                <CustomTableCell numeric>{ Object.keys(obj.trips).length - 1 }</CustomTableCell>
-                <CustomTableCell numeric>{obj.Email}</CustomTableCell>
-                <CustomTableCell numeric>{obj.Status}</CustomTableCell>
-                <CustomTableCell numeric>{TimeConverter(obj.LastSeen)}</CustomTableCell>
-                <CustomTableCell numeric>{obj.Phone}</CustomTableCell>
-               </TableRow>
-            );
-          })}
-        </TableBody>
+        
       </Table>
     </Paper>
   );
@@ -163,3 +78,36 @@ CustomizedTable.propTypes = {
 };
 
 export default withStyles(styles)(CustomizedTable);
+
+
+class Usertable extends Component {
+ 
+  render() {
+
+// const sum = Object.keys(this.props.users)
+// console.log(sum)
+// const total =  sum.length
+const username = this.props.users
+// console.log(username)
+const  lastseen =  username.map(obj => {
+    obj.LastSeen })
+    // var  notripss = props.ntrips
+// const { classes } = this.props;
+
+    return(
+
+
+      <TableBody>
+        {username.map((obj, key) => {
+
+           
+
+
+            return  <ListGroupCollapse key={obj} item={username[key]} ></ListGroupCollapse>
+              
+          
+          })}
+ </TableBody>
+    )}
+        }
+export {Usertable}
