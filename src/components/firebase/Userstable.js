@@ -78,18 +78,10 @@ const {classes } = props;
           </TableRow>
         </TableHead>
         <TableBody>
-
-    
-{username.map((obj, key) => {
-
-   
-
-
-    return  <ListGroupCollapse key={obj} item={username[key]} ></ListGroupCollapse>
-      
-  
-  })}
-</TableBody>
+     {username.map((obj, key) => {
+                 return  <ListGroupCollapse key={obj} item={username[key]} ></ListGroupCollapse>
+                 })}
+        </TableBody>
       </Table>
     </Paper>
   );

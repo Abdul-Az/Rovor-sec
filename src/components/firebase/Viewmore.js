@@ -107,7 +107,26 @@ class ListGroupCollapse extends React.Component {
                 <CustomTableCell numeric>{TimeConverter(obj.LastSeen)}</CustomTableCell>
                 <CustomTableCell numeric>{obj.Phone}</CustomTableCell>
                </TableRow>
-          <Collapse isOpen={this.state.collapse}>sdgsgadfga</Collapse>
+          <Collapse isOpen={this.state.collapse}>
+          
+          
+          
+          
+          sdgsgadfga
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          </Collapse>
           </Fragment>
         
         
