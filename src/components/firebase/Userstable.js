@@ -15,6 +15,8 @@ import {db} from "./base";
 import { Well } from 'react-bootstrap';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import ListGroupCollapse from "./Viewmore";
+import orderBy from "lodash/orderBy";
+import _ from "lodash";
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -48,26 +50,46 @@ const styles = theme => ({
 
 
     
-function CustomizedTable(props) {
+class CustomizedTable extends Component{
+  constructor(props){
+    super(props)
+
+    this.state = {
+      username : this.props.users,
+      sortDirection : 'dsc'
+    }
+  }
 
   // const sum = Object.keys(this.props.users)
 // console.log(sum)
 // const total =  sum.length
-const username = props.users
+
+// handleSort() {
+  
+// this.setState(state => ({
+//    sortDirection :  this.dataDirection
+// }))
+// }
+
+render() {
+const username = this.props.users
 // console.log(username)
+const sortedusers = this.props.sortedusers
+
 const  lastseen =  username.map(obj => {
     obj.LastSeen })
     // var  notripss = props.ntrips
 // const { classes } = this.props;
 
-const {classes } = props;
+
+const {classes } = this.props;
 
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow >
-            <CustomTableCell  style={{fontSize: "Large"}}>Username</CustomTableCell>
+            <CustomTableCell  style={{fontSize: "Large"}} onClick={sortedusers}>Username</CustomTableCell>
             <CustomTableCell numeric style={{fontSize: "Large"}}>Gender</CustomTableCell>
             <CustomTableCell numeric style={{fontSize: "Large"}}>Max. Speed</CustomTableCell>
             <CustomTableCell numeric style={{fontSize: "Large"}}>No. of Trips</CustomTableCell>
@@ -87,10 +109,10 @@ const {classes } = props;
   );
 }
 
-CustomizedTable.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
+// CustomizedTable.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
+}
 export default withStyles(styles)(CustomizedTable);
 
 

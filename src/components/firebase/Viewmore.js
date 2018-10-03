@@ -13,8 +13,11 @@ import {firebaseApp} from "./base";
 import database from "firebase/database";
 import base from "./base";
 import {db} from "./base";
-import { Well } from 'react-bootstrap';
+// import { Well } from 'react-bootstrap';
 import CustomizedTable from "./Userstable";
+import MapContainer from "./GmapsAPI";
+// import Grid from '@material-ui/core/Grid';
+// import CenteredGrid from "./ViewContainer";
 // import {Usertable}  from "./Userstable";
 // import { Collapse, Button, CardBody, Card } from 'reactstrap';
 // import ListGroupCollapse from "./Viewmore";
@@ -108,11 +111,12 @@ class ListGroupCollapse extends React.Component {
                 <CustomTableCell numeric>{obj.Phone}</CustomTableCell>
                </TableRow>
           <Collapse isOpen={this.state.collapse}>
+        
+         <MapContainer />
           
           
           
-          
-          sdgsgadfga
+         
           
           
           

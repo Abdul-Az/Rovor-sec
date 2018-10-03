@@ -6,22 +6,27 @@ import {firebaseApp} from "./base";
 import database from "firebase/database";
 import base from "./base";
 import CustomizedTable from "./Userstable";
-import _ from "underscore";
+// import _ from "underscore";
 import ListGroupCollapse from "./Viewmore";
 // import {Usertable}  from "./Userstable";
+import orderBy from "lodash/orderBy";
+import _ from "lodash";
 
 
 class Allusers extends Component {
     constructor(props) {
         super(props);
+        this.dataDirection = this.dataDirection.bind(this);
 
         this.state = {
             Allusers : [],
-            ntrips : []
+           
+    
         }
         
     }
-
+  
+      
 
     componentDidMount(){
 
@@ -43,13 +48,21 @@ class Allusers extends Component {
                 })
             this.setState({
                 Allusers : userresult,
-                ntrips : notrips
+               
             })
-        }.bind(this))
-
-     
-    
+        }.bind(this))   
  }
+
+  
+ dataDirection() {
+    this.setState( () => {
+ let sorted =  _.orderBy(this.state.Allusers, ['LastSeen'], ['asc'])
+        return {
+            Allusers : sorted
+        }
+    })
+   
+  }
  
 render() {
 
@@ -59,7 +72,7 @@ render() {
 
   return (
      <div>
-         <CustomizedTable users={this.state.Allusers}  />
+         <CustomizedTable users={this.state.Allusers}  sortedusers={this.dataDirection}/>
          {/* <ListGroupCollapse  users={this.state.Allusers} /> */}
          {/* <Usertable users={this.state.Allusers} /> */}
          {/* {console.log(users)} */}
