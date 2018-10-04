@@ -56,7 +56,11 @@ class Allusers extends Component {
   
  dataDirection() {
     this.setState( () => {
- let sorted =  _.orderBy(this.state.Allusers, ['LastSeen'], ['asc'])
+        const invert = {
+            asc : "desc",
+            desc: "asc"
+          }
+ let sorted =  _.orderBy(this.state.Allusers, ['LastSeen'], ['desc'])
         return {
             Allusers : sorted
         }

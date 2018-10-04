@@ -1,57 +1,32 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-// import Grid from '@material-ui/core/Grid';
-// import MapContainer from "./GmapsAPI";
-
-// const styles = theme => ({
-//     root: {
-//       flexGrow: 1,
-//     },
-//     paper: {
-//       padding: theme.spacing.unit * 2,
-//       textAlign: 'center',
-//       color: theme.palette.text.secondary,
-//     },
-//   });
-  
-//   function CenteredGrid(props) {
-//     const { classes } = props;
-  
-//     return (
-//       <div className={classes.root}>
-//         <Grid container spacing={24}>
-//           {/* <Grid item xs={12}>
-//             <Paper className={classes.paper}>xs=12</Paper>
-//           </Grid> */}
-//           <Grid item xs={6}>
-//             <Paper className={classes.paper}>
-//             <MapContainer /> 
-//             </Paper>
-//           </Grid>
-//           <Grid item xs={6}>
-//             <Paper className={classes.paper}>xs=6</Paper>
-//           </Grid>
-//           {/* <Grid item xs={3}>
-//             <Paper className={classes.paper}>xs=3</Paper>
-//           </Grid>
-//           <Grid item xs={3}>
-//             <Paper className={classes.paper}>xs=3</Paper>
-//           </Grid>
-//           <Grid item xs={3}>
-//             <Paper className={classes.paper}>xs=3</Paper>
-//           </Grid>
-//           <Grid item xs={3}>
-//             <Paper className={classes.paper}>xs=3</Paper>
-//           </Grid> */}
-//         </Grid>
-//       </div>
-//     );
-//   }
-  
-//   CenteredGrid.propTypes = {
-//     classes: PropTypes.object.isRequired,
-//   };
-  
-//   export default withStyles(styles)(CenteredGrid);
+import React from 'react';
+import { Container, Row, Col, Card, Button, CardImg, CardTitle, CardText, CardColumns,
+    CardSubtitle, CardBody } from 'reactstrap';
+import Calendar from 'react-calendar-material';
+import MapContainer from "./GmapsAPI";
+export default class ViewContainer extends React.Component {
+  render() {
+    return (
+      <Container style={{display: 'flex', }}>
+      
+          <Col xs="24">
+          <Calendar
+    accentColor={'blue'}
+    orientation={'flex-row'}
+    showHeader={true}
+    onDatePicked={(d) => {
+      console.log('onDatePicked', d);
+    }}/>
+          </Col>
+         
+          
+          <Col xs="24"><MapContainer/></Col>
+        <Col xs="24">
+        <Card body inverse color="primary" style={{height: '100%', width: "300px", marginLeft: "370px"}}>
+        <CardTitle>Special Title Treatment</CardTitle>
+        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+      </Card>
+        </Col>
+      </Container>
+    );
+  }
+}

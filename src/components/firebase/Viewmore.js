@@ -15,9 +15,11 @@ import base from "./base";
 import {db} from "./base";
 // import { Well } from 'react-bootstrap';
 import CustomizedTable from "./Userstable";
-import MapContainer from "./GmapsAPI";
+
+// import Calendar from 'react-calendar';
+
 // import Grid from '@material-ui/core/Grid';
-// import CenteredGrid from "./ViewContainer";
+import ViewContainer from "./ViewContainer";
 // import {Usertable}  from "./Userstable";
 // import { Collapse, Button, CardBody, Card } from 'reactstrap';
 // import ListGroupCollapse from "./Viewmore";
@@ -105,14 +107,22 @@ class ListGroupCollapse extends React.Component {
                 <CustomTableCell numeric>{obj.gender}</CustomTableCell>
                 <CustomTableCell numeric>{overalltripmax}</CustomTableCell>
                 <CustomTableCell numeric>{ Object.keys(obj.trips).length - 1 }</CustomTableCell>
-                <CustomTableCell numeric>{obj.Email}</CustomTableCell>
+                {/* <CustomTableCell numeric>{obj.Email}</CustomTableCell> */}
                 <CustomTableCell numeric>{obj.Status}</CustomTableCell>
                 <CustomTableCell numeric>{TimeConverter(obj.LastSeen)}</CustomTableCell>
-                <CustomTableCell numeric>{obj.Phone}</CustomTableCell>
+                {/* <CustomTableCell numeric>{obj.Phone}</CustomTableCell> */}
                </TableRow>
           <Collapse isOpen={this.state.collapse}>
+        <ViewContainer>   
+       
+       
+            </ViewContainer>
+        {/* <Calendar /> */}
+        {/* <MapContainer /> */}
         
-         <MapContainer />
+
+       
+         
           
           
           

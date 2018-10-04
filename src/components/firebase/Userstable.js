@@ -72,6 +72,7 @@ class CustomizedTable extends Component{
 // }
 
 render() {
+  
 const username = this.props.users
 // console.log(username)
 const sortedusers = this.props.sortedusers
@@ -89,14 +90,14 @@ const {classes } = this.props;
       <Table className={classes.table}>
         <TableHead>
           <TableRow >
-            <CustomTableCell  style={{fontSize: "Large"}} onClick={sortedusers}>Username</CustomTableCell>
+            <CustomTableCell  style={{fontSize: "Large"}} >Username</CustomTableCell>
             <CustomTableCell numeric style={{fontSize: "Large"}}>Gender</CustomTableCell>
             <CustomTableCell numeric style={{fontSize: "Large"}}>Max. Speed</CustomTableCell>
             <CustomTableCell numeric style={{fontSize: "Large"}}>No. of Trips</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}}>Email</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}}>Status</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}}>Last Seen</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}}>Phone</CustomTableCell>
+            {/* <CustomTableCell numeric style={{fontSize: "Large"}}>Email</CustomTableCell> */}
+            <CustomTableCell numeric style={{fontSize: "Large"}} >Status</CustomTableCell>
+            <CustomTableCell numeric style={{fontSize: "Large"}} onClick={sortedusers}>Last Seen</CustomTableCell>
+            {/* <CustomTableCell numeric style={{fontSize: "Large"}}>Phone</CustomTableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
