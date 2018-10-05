@@ -144,6 +144,7 @@ color={'#45ff00'}
  handler={print}>
 </CalendarHeatmap> */}
         <ViewContainer  tripdetails={this.props.item} />   
+        
        
        
             {/* </ViewContainer> */}
