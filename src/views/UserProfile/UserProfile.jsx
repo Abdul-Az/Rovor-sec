@@ -1,193 +1,168 @@
-// import React from "react";
-// @material-ui/core components
-// import withStyles from "@material-ui/core/styles/withStyles";
-// import InputLabel from "@material-ui/core/InputLabel";
-// core components
-import GridItem from "components/Grid/GridItem.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-// import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-// import Card from "components/Card/Card.jsx";
-// import CardHeader from "components/Card/CardHeader.jsx";
-// import CardAvatar from "components/Card/CardAvatar.jsx";
-// import CardBody from "components/Card/CardBody.jsx";
-// import CardFooter from "components/Card/CardFooter.jsx";
-// import UserCard from "./UserCard";
 import React from 'react';
-// import NavBar from './components/NavBar'
-// import CourseList from './components/CourseList';
-// import Card from "./Organizations";
-// import Example from "./Example";
+import { Card, Button, CardImg, CardTitle, CardText, CardColumns,
+ CardSubtitle, CardBody } from 'reactstrap';
+import Userstable from "../../components/firebase/Userstable";
 
+class UserProfile extends React.Component {
+constructor(props){
+  super(props)
 
-
-// import avatar from "assets/img/faces/marc.jpg";
-
-// const styles = {
-//   cardCategoryWhite: {
-//     color: "rgba(255,255,255,.62)",
-//     margin: "0",
-//     fontSize: "14px",
-//     marginTop: "0",
-//     marginBottom: "0"
-//   },
-//   cardTitleWhite: {
-//     color: "#FFFFFF",
-//     marginTop: "0px",
-//     minHeight: "auto",
-//     fontWeight: "300",
-//     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-//     marginBottom: "3px",
-//     textDecoration: "none"
-//   }
-// };
-
-function UserProfile() {
-  // const { classes } = props;
-  return (
-    <div>
-      {/* <Example /> */}
-          {/* <Card /> */}
-       {/* <CourseList /> */}
-     <GridContainer direction={"column"} justify={"center"} alignItems={"center"}>
-        <GridItem xs={12} sm={12} md={12} ls={12} direction={"column"}>
-        {/* <Example /> */}
-          {/* <Card>
-            <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
-              <p className={classes.cardCategoryWhite}>Complete your profile</p>
-            </CardHeader>
-            <CardBody>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={5}>
-                  <CustomInput
-                    labelText="Company (disabled)"
-                    id="company-disabled"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      disabled: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={3}>
-                  <CustomInput
-                    labelText="Username"
-                    id="username"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Email address"
-                    id="email-address"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="First Name"
-                    id="first-name"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Last Name"
-                    id="last-name"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="City"
-                    id="city"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Country"
-                    id="country"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Postal Code"
-                    id="postal-code"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
-                  <CustomInput
-                    labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 5
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-            </CardBody>
-            <CardFooter>
-              <Button color="primary">Update Profile</Button>
-            </CardFooter>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card profile>
-            <CardAvatar profile>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="..." />
-              </a>
-            </CardAvatar>
-            <CardBody profile>
-            <CourseList /> */}
-            {/* <div><UserCard /></div> */}
-            
-             {/* <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
-              <p className={classes.description}>
-                Don't be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...
-              </p>
-              <Button color="primary" round>
-                Follow
-              </Button>
-             </CardBody>
-          </Card> */}
-        </GridItem>
-      </GridContainer>
-    </div>
-  );
 }
-// export {UserCard}
-export default (UserProfile);
+
+
+render() {
+  var username = [{
+    user : "User1",
+    gender : "Male",
+    status : "Online",
+    trips : 20
+  
+  },
+  {
+    user : "User1",
+    gender : "Male",
+    status : "Online",
+    trips : 20
+  
+  },
+  {
+    user : "User1",
+    gender : "Male",
+    status : "Online",
+    trips : 20
+  
+  },
+  {
+    user : "User1",
+    gender : "Male",
+    status : "Online",
+    trips : 20
+  
+  },
+  {
+    user : "User1",
+    gender : "Male",
+    status : "Online",
+    trips : 20
+  
+  },
+  {
+    user : "User1",
+    gender : "Male",
+    status : "Online",
+    trips : 20
+  
+  },
+  {
+    user : "User1",
+    gender : "Male",
+    status : "Online",
+    trips : 20
+  
+  }]
+  
+  return (
+    <CardColumns>
+      
+
+                 <Card body inverse color="danger"  >
+                 <CardTitle>User7</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 20</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="danger"  >
+                 <CardTitle>User8</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 114</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="danger"  >
+                 <CardTitle>User10</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 23</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="warning"  >
+                 <CardTitle>User9</CardTitle>
+                 <CardTitle>Female</CardTitle>
+                 <CardTitle>No. of rids 51</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="warning"  >
+                 <CardTitle>User4</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 70</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="warning"  >
+                 <CardTitle>User3</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 5</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="warning"  >
+                 <CardTitle>User12</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 42</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>User10</CardTitle>
+                 <CardTitle>Female</CardTitle>
+                 <CardTitle>No. of rids 3</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>User5</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 1</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>User2</CardTitle>
+                 <CardTitle>Female</CardTitle>
+                 <CardTitle>No. of rids 17</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>User2</CardTitle>
+                 <CardTitle>Female</CardTitle>
+                 <CardTitle>No. of rids 8</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>UserA</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 11</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>User14</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 4</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>UserC</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 20</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               <Card body inverse color="success"  >
+                 <CardTitle>UserB</CardTitle>
+                 <CardTitle>Male</CardTitle>
+                 <CardTitle>No. of rids 21</CardTitle>
+                 <Button color="secondary">View More</Button>
+               </Card>
+               
+
+          
+                
+    
+      
+   </CardColumns>
+  );
+  }
+}
+export default UserProfile;

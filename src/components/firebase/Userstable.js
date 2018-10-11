@@ -13,10 +13,16 @@ import database from "firebase/database";
 import base from "./base";
 import {db} from "./base";
 import { Well } from 'react-bootstrap';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+// import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import ListGroupCollapse from "./Viewmore";
 import orderBy from "lodash/orderBy";
 import _ from "lodash";
+
+import { Card, Button, CardImg, CardTitle, CardText, CardColumns,
+  CardSubtitle, CardBody } from 'reactstrap';
+  
+import UserProfile from '../../views/UserProfile/UserProfile';
+  
 const CustomTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -86,27 +92,15 @@ const  lastseen =  username.map(obj => {
 const {classes } = this.props;
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow >
-            <CustomTableCell  style={{fontSize: "Large"}} >Username</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}}>Gender</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}}>Max. Speed</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}}>No. of Trips</CustomTableCell>
-            {/* <CustomTableCell numeric style={{fontSize: "Large"}}>Email</CustomTableCell> */}
-            <CustomTableCell numeric style={{fontSize: "Large"}} >Status</CustomTableCell>
-            <CustomTableCell numeric style={{fontSize: "Large"}} onClick={sortedusers}>Last Seen</CustomTableCell>
-            {/* <CustomTableCell numeric style={{fontSize: "Large"}}>Phone</CustomTableCell> */}
-          </TableRow>
-        </TableHead>
-        <TableBody>
+  
+    <CardColumns>
+      
      {username.map((obj, key) => {
-                 return  <ListGroupCollapse key={obj} item={username[key]} ></ListGroupCollapse>
+                 return  <UserProfile key={obj} item={username[key]} ></UserProfile>
+                 {console.log(this.item)}
                  })}
-        </TableBody>
-      </Table>
-    </Paper>
+    </CardColumns>
+      
   );
 }
 
