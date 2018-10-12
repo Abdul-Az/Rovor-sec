@@ -71,18 +71,21 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={6} md={3}>
             <Card>
               <CardHeader color="info" stats icon>
+
                 <CardIcon color="info">
                 <div style={{fontSize:"50px"}}>18</div>
                   {/* <Icon>mood</Icon> */}
                 </CardIcon>
+               
                 {/* <p className={classes.cardCategory}>Total Riders</p> */}
                 {/* <h3 className={classes.cardTitle}>18</h3> */}
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                <LocalOffer />
-                Total Riders
-                </div>
+              
+              <CardFooter >
+            
+                <Icon>group</Icon> 
+                <h4>Total Riders</h4>
+              
               </CardFooter>
             </Card>
           </GridItem>
@@ -94,26 +97,29 @@ class Dashboard extends React.Component {
               <CardHeader color="success" stats icon>
                 <CardIcon color="success">
                 <div style={{fontSize:"50px"}}>8</div>
+               
                 {/* <Icon>mood</Icon> */}
                 </CardIcon>
                 <CardIcon color="warning">
                 <div style={{fontSize:"50px"}}>4</div>
+                
                 {/* <Icon>sentiment_very_dissatisfied</Icon> */}
                 </CardIcon>
                 <CardIcon color="danger">
                 <div style={{fontSize:"50px"}}>3</div>
+               
                 {/* <Icon>mood_bad</Icon> */}
                 </CardIcon>
                 {/* <p className={classes.cardCategory}>Moderate Riders</p>
                 <h3 className={classes.cardTitle}>4</h3> */}
                 
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                <LocalOffer />
-                 Realtime Riders Status
-                </div>
-              </CardFooter>
+              <CardFooter >
+            
+            <Icon>group</Icon> 
+            <h4>Realtime Riders Status</h4>
+          
+          </CardFooter>
             </Card>
           </GridItem>
           
@@ -124,32 +130,38 @@ class Dashboard extends React.Component {
                 <div style={{fontSize:"50px"}}>15</div>
                   {/* <Icon>supervisor_account</Icon> */}
                 </CardIcon>
+                
                 {/* <p className={classes.cardCategory}>Online Users</p> */}
                 {/* <h3 className={classes.cardTitle}>6</h3> */}
               </CardHeader>
-              <CardFooter stats>
-              <div className={classes.stats}>
-                <LocalOffer />
-                Total Realtime Riders
-                </div>
-              </CardFooter>
+              <CardFooter>
+              <Icon>group</Icon> 
+            <h4>Total Realtime Riders</h4>
+          
+          </CardFooter>
             </Card>
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
               <CardHeader color="info" stats icon>
                 <CardIcon color="info">
-                <div style={{fontSize:"50px"}}>18</div>
+                <div style={{fontSize:"50px"}}>12</div>
                   {/* <Icon>mood</Icon> */}
                 </CardIcon>
+                <CardIcon color="warning">
+                
+              <div  style={{fontSize:"50px"}}>3</div>
+                
+                {/* <Icon>sentiment_very_dissatisfied</Icon> */}
+                </CardIcon>
+                
                 {/* <p className={classes.cardCategory}>Total Riders</p> */}
                 {/* <h3 className={classes.cardTitle}>18</h3> */}
               </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                <LocalOffer />
-                Total Riders
-                </div>
+              <CardFooter>
+              <Icon>group</Icon> 
+            <h4>Realtime Male vs Female</h4>
+          
               </CardFooter>
             </Card>
           </GridItem>

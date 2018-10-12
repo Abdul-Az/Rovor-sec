@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
@@ -8,7 +8,12 @@ import Table from "components/Table/Table.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-
+import ControlledCarousel from './Carousel';
+import Icon from "@material-ui/core/Icon";
+import CardIcon from "components/Card/CardIcon.jsx";
+import CardFooter from "components/Card/CardFooter.jsx";
+import Pushpanel from "./Pushpanel";
+import Toggelbutton from "./Toggelbutton";
 const styles = {
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
@@ -42,70 +47,140 @@ const styles = {
 function TableList(props) {
   const { classes } = props;
   return (
+    <Fragment>
     <GridContainer>
-      <GridItem xs={12} sm={12} md={12}>
-        <Card>
-          <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Simple Table</h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                ["Doris Greene", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-                ["Mason Porter", "Chile", "Gloucester", "$78,615"]
-              ]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
+          <GridItem xs={12} sm={6} md={3}>
+            <Card>
+              <CardHeader color="info" stats icon>
+
+                <CardIcon color="info">
+                <div style={{fontSize:"30px"}}>25</div>
+                  {/* <Icon>mood</Icon> */}
+                </CardIcon>
+               
+                {/* <p className={classes.cardCategory}>Total Riders</p> */}
+                {/* <h3 className={classes.cardTitle}>18</h3> */}
+              </CardHeader>
+              
+              <CardFooter >
+            
+                <Icon>person</Icon> 
+                <h4>No. of Rides</h4>
+              
+              </CardFooter>
+            </Card>
+          </GridItem>
+
+        
+
+          <GridItem xs={12} sm={6} md={3}>
+            <Card>
+              <CardHeader color="success" stats icon>
+                <CardIcon color="success">
+                <div style={{fontSize:"30px"}}>10</div>
+               
+                {/* <Icon>mood</Icon> */}
+                </CardIcon>
+                <CardIcon color="warning">
+                <div style={{fontSize:"30px"}}>12</div>
+                
+                {/* <Icon>sentiment_very_dissatisfied</Icon> */}
+                </CardIcon>
+                <CardIcon color="danger">
+                <div style={{fontSize:"30px"}}>3</div>
+               
+                {/* <Icon>mood_bad</Icon> */}
+                </CardIcon>
+                {/* <p className={classes.cardCategory}>Moderate Riders</p>
+                <h3 className={classes.cardTitle}>4</h3> */}
+                
+              </CardHeader>
+              <CardFooter >
+            
+            <Icon>person</Icon> 
+            <h4>Ride Types</h4>
+          
+          </CardFooter>
+            </Card>
+          </GridItem>
+          
+          <GridItem xs={12} sm={6} md={3}>
+            <Card>
+              <CardHeader color="info" stats icon>
+                <CardIcon color="info">
+                <div style={{fontSize:"30px"}}>140 kmph</div>
+                  {/* <Icon>supervisor_account</Icon> */}
+                </CardIcon>
+                
+                {/* <p className={classes.cardCategory}>Online Users</p> */}
+                {/* <h3 className={classes.cardTitle}>6</h3> */}
+              </CardHeader>
+              <CardFooter>
+              <Icon>person</Icon> 
+            <h4>Max. Speed</h4>
+          
+          </CardFooter>
+            </Card>
+          </GridItem>
+          <GridItem xs={12} sm={6} md={3}>
+            <Card>
+              <CardHeader color="info" stats icon>
+                <CardIcon color="info">
+                <div style={{fontSize:"30px"}}>14 mins</div>
+                  {/* <Icon>mood</Icon> */}
+                </CardIcon>
+                
+                {/* <p className={classes.cardCategory}>Total Riders</p> */}
+                {/* <h3 className={classes.cardTitle}>18</h3> */}
+              </CardHeader>
+              <CardFooter>
+              <Icon>person</Icon> 
+            <h4>Average Trip Duration</h4>
+          
+              </CardFooter>
+            </Card>
+          </GridItem>
+        
+        </GridContainer>
+
+      
+      <GridContainer>
+      <GridItem xs={8} sm={8} md={8}>
         <Card plain>
           <CardHeader plain color="primary">
-            <h4 className={classes.cardTitleWhite}>
-              Table on Plain Background
-            </h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
+          <div style={{display:"flex", justifyContent:"space-between"}}>
+          <h4 style={{display:"block"}} className={classes.cardTitleWhite}>
+              User Carousel
+          <p className={classes.cardCategoryWhite}>
+              Here are the trip details
             </p>
+            </h4> 
+            <Toggelbutton /> 
+            </div>
+            
+            {/* <p className={classes.cardCategoryWhite}>
+              Here is a subtitle for this table
+            </p> */}
           </CardHeader>
           <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["ID", "Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-                ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-                ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-                [
-                  "4",
-                  "Philip Chaney",
-                  "$38,735",
-                  "Korea, South",
-                  "Overland Park"
-                ],
-                [
-                  "5",
-                  "Doris Greene",
-                  "$63,542",
-                  "Malawi",
-                  "Feldkirchen in Kärnten"
-                ],
-                ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
-              ]}
-            />
+          <ControlledCarousel />
           </CardBody>
         </Card>
+      </GridItem >
+      <GridItem xs={4} sm={4} md={4}>
+      <Card profile>
+      <CardHeader plain color="primary">
+            <h4 className={classes.cardTitleWhite}>
+              Push Notification
+            </h4>
+      </CardHeader>
+       <Pushpanel />
+
+      </Card>
+
       </GridItem>
     </GridContainer>
+    </Fragment>
   );
 }
 

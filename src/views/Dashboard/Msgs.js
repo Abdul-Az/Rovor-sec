@@ -64,7 +64,7 @@ class CheckboxList extends React.Component {
               <ListItemText dense primary={`Compliments ${value + 1}`} />
               <Button variant="contained" color="primary" className={classes.button}>
         Send
-        {/* <Icon className={classes.rightIcon}>send</Icon> */}
+    
       </Button>
             </ListItem>
           ))}

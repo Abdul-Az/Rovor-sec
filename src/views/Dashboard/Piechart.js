@@ -9,7 +9,7 @@ class Piechart extends React.Component {
         new Chart(ctxD, {
             type: 'doughnut',
             data: {
-                labels: ["Unsafe", "Safe", "Moderate"],
+                labels: ["Unsafe 25%", "Safe 55%", "Moderate 20%"],
                 datasets: [
                     {
                         data: [3, 8, 4],
