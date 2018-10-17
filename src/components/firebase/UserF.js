@@ -12,14 +12,14 @@ import _ from "underscore";
 // import { TimeConverter } from './Timeconverter';
 
 
-class Userslistm extends Component {
+class UserF extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             Usernamem : [],
             Usernamec : [],
-            male : [],
+            female : [],
         }
     }
 
@@ -41,8 +41,8 @@ class Userslistm extends Component {
                 return obj.Status === "Online"
               })
 
-              var maleo = resultM.filter(obj => {
-                  return obj.gender === "Male"
+              var femaleo = resultM.filter(obj => {
+                  return obj.gender === "Female"
               })
 
               var resultC = Username.filter(obj => {
@@ -75,7 +75,7 @@ class Userslistm extends Component {
                 this.setState({
                     Usernamem : resultM,
                     Usernamec : resultC,
-                    male : maleo,
+                    female : femaleo,
                 })
         }
 
@@ -137,10 +137,10 @@ TrRef.on("child_added", function(Data){
 // console.log(firebaseRef)
   return (
      <div>
-         {this.state.male.length}
+         {this.state.female.length}
          {/* <ListGroupCollapse  users={this.state.Usernamec} /> */}
      </div>
   );
 };
 }
-export default Userslistm;
+export default UserF;

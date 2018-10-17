@@ -33,8 +33,10 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import { bugs, website, server } from "variables/general";
 import Piechart from "./Piechart";
 import CheckboxList from "./Msgs";
-// import Totalusers from "./totalusers";
-
+import Allusers from "../../components/firebase/Allusers";
+import Userslistm from "../../components/firebase/Userslistm";
+import Userslistc from "../../components/firebase/Userslistc";
+import UserF from "../../components/firebase/UserF";
 import {
   dailySalesChart,
   emailsSubscriptionChart,
@@ -44,6 +46,10 @@ import {
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
 class Dashboard extends React.Component {
+  constructor(props){
+    super(props);
+
+  }
   state = {
     value: 0
   };
@@ -73,7 +79,8 @@ class Dashboard extends React.Component {
               <CardHeader color="info" stats icon>
 
                 <CardIcon color="info">
-                <div style={{fontSize:"50px"}}>18</div>
+                <div style={{fontSize:"50px"}}><Allusers /></div>
+                {/* {console.log(Allusers)} */}
                   {/* <Icon>mood</Icon> */}
                 </CardIcon>
                
@@ -127,7 +134,7 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="info" stats icon>
                 <CardIcon color="info">
-                <div style={{fontSize:"50px"}}>15</div>
+                <div style={{fontSize:"50px"}}><Userslistm /></div>
                   {/* <Icon>supervisor_account</Icon> */}
                 </CardIcon>
                 
@@ -145,12 +152,12 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="info" stats icon>
                 <CardIcon color="info">
-                <div style={{fontSize:"50px"}}>12</div>
+                <div style={{fontSize:"50px"}}><Userslistc /></div>
                   {/* <Icon>mood</Icon> */}
                 </CardIcon>
                 <CardIcon color="warning">
                 
-              <div  style={{fontSize:"50px"}}>3</div>
+              <div  style={{fontSize:"50px"}}><UserF /></div>
                 
                 {/* <Icon>sentiment_very_dissatisfied</Icon> */}
                 </CardIcon>

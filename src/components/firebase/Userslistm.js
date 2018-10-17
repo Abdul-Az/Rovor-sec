@@ -36,7 +36,7 @@ class Userslistm extends Component {
             //  console.log(Username)
 
             var resultM = Username.filter(obj => {
-                return obj.organization === "TCSMumbai"
+                return obj.Status === "Online"
               })
 
               var resultC = Username.filter(obj => {
@@ -87,7 +87,7 @@ console.log(notrips)
 
   return (
      <div>
-         <CustomizedTable users={this.state.Usernamem}  />
+         {this.state.Usernamem.length}
          {/* <ListGroupCollapse  users={this.state.Usernamem} /> */}
      </div>
   );

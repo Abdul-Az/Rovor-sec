@@ -11,7 +11,7 @@ import ListGroupCollapse from "./Viewmore";
 // import {Usertable}  from "./Userstable";
 import orderBy from "lodash/orderBy";
 import _ from "lodash";
-import UserProfile from '../../views/UserProfile/UserProfile';
+import Dashboard from '../../views/Dashboard/Dashboard';
 
 
 class Allusers extends Component {
@@ -77,8 +77,8 @@ render() {
 
   return (
      <div>
-         <CustomizedTable users={this.state.Allusers}  sortedusers={this.dataDirection}/>
-         {/* <UserProfile  users={this.state.Allusers} /> */}
+         {/* <CustomizedTable users={this.state.Allusers}  sortedusers={this.dataDirection}/> */}
+         {this.state.Allusers.length}
          {/* <Usertable users={this.state.Allusers} /> */}
          {/* {console.log(users)} */}
          
