@@ -51,24 +51,65 @@ function TableList(props) {
   // console.log(props.match.params.id)
   // const user = props.uid;
     
+  // var userid = username.filter(obj => {
+  //   const user = props.uid;
+  //   if(user === obj.UserId)
+  //   return obj
+  // })
+  // console.log(userid)
   var userid = username.filter(obj => {
     const user = props.uid;
     if(user === obj.UserId)
     return obj
   })
-  console.log(userid)
-  return (
+
+// for avg trip duration 
+var tripduration = userid.map(obj =>{return  Object.values(obj.trips).map(value => { 
+  let { userId, ...y} = obj.trips
+  return  Object.values(y).map(s => {                   
+  return s.tripDuration })}) 
+  })
+
+// for avg time taken 
+
+var sum = 0;
+for( var i = 0; i < tripduration.length; i++ ){
+    sum += parseInt( tripduration[i], 10 ); //don't forget to add the base
+}
+
+var avg = sum/tripduration.length;
+var avgtime = Math.ceil(avg/60) 
+
+
+//for overall max speed
+  var allmaxspeed = userid.map(obj =>{return  Object.values(obj.tripSpeeds).map(value => { 
+    let { userId, ...y} = obj.tripSpeeds
+    return  Object.values(y).map(s => {                   
+    return Object.values(s).reduce((acc, t) => acc = acc > t.speed ? acc : t.speed, 0) })}) 
+    })
+   var  tripmaxspeed =  Object.values(allmaxspeed).reduce((acc, t) => acc = acc > t ? acc : t, 0)
+   var overalltripmax =  Object.values(tripmaxspeed).reduce((acc, t) => acc = acc > t ? acc : t, 0)
+   var overalltripmax1 = Object.values(overalltripmax).reduce((acc, t) => acc = acc > t ? acc : t, 0)
+  //  console.log(overalltripmax1)
+
+ //for no of trips
+ 
+  var notrips = userid.map(obj =>{return Object.keys(obj.trips).length - 1})
+
+  //for username
+  var usernamesp = userid.map(obj =>{return obj.Username})
+    return (
     <Fragment>
    
 
-    
+    <h4>{usernamesp}</h4>
     <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
               <CardHeader color="info" stats icon>
 
                 <CardIcon color="info">
-                <div style={{fontSize:"30px"}}></div>
+                <div style={{fontSize:"30px"}}>{notrips}</div>
                   {/* <Icon>mood</Icon> */}
                 </CardIcon>
                
@@ -122,7 +163,7 @@ function TableList(props) {
             <Card>
               <CardHeader color="info" stats icon>
                 <CardIcon color="info">
-                <div style={{fontSize:"30px"}}>140 kmph</div>
+                <div style={{fontSize:"30px"}}>{overalltripmax1} kmph</div>
                   {/* <Icon>supervisor_account</Icon> */}
                 </CardIcon>
                 
@@ -140,7 +181,7 @@ function TableList(props) {
             <Card>
               <CardHeader color="info" stats icon>
                 <CardIcon color="info">
-                <div style={{fontSize:"30px"}}>14 mins</div>
+                <div style={{fontSize:"30px"}}>{avgtime} mins</div>
                   {/* <Icon>mood</Icon> */}
                 </CardIcon>
                 

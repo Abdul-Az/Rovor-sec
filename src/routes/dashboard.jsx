@@ -30,15 +30,15 @@ const dashboardRoutes = [
   {
     path: "/user",
     sidebarName: "Users",
-    navbarName: "Profile",
+    navbarName: "Profiles",
     icon: Person,
     component: AllusersP
   },
   {
     path: "/table/:id",
-    sidebarName: "User Details",
-    navbarName: "User1",
-    icon: "content_paste",
+    sidebarName: "",
+    navbarName: "",
+    icon: "",
     component: UserSp
   },
   // {
