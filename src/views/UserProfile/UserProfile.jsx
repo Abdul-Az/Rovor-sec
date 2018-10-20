@@ -46,7 +46,7 @@ class UserProfile extends React.Component {
     const { classes } = this.props;
     
     const username = this.props.users
-    console.log(username)
+    // console.log(username)
   return (
     <div>
       <GridContainer>
@@ -64,7 +64,7 @@ class UserProfile extends React.Component {
               No. of Trips { Object.keys(obj.trips).length - 1 }
               </h4>
             
-               <Link to="/table" >
+               <Link to={`/table/${obj.UserId}`} >
                
                <Button color="info" round  >
                View More

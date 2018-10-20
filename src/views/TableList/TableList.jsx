@@ -46,15 +46,29 @@ const styles = {
 
 function TableList(props) {
   const { classes } = props;
+  console.log(props)
+  const username = props.users
+  // console.log(props.match.params.id)
+  // const user = props.uid;
+    
+  var userid = username.filter(obj => {
+    const user = props.uid;
+    if(user === obj.UserId)
+    return obj
+  })
+  console.log(userid)
   return (
     <Fragment>
+   
+
+    
     <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
             <Card>
               <CardHeader color="info" stats icon>
 
                 <CardIcon color="info">
-                <div style={{fontSize:"30px"}}>25</div>
+                <div style={{fontSize:"30px"}}></div>
                   {/* <Icon>mood</Icon> */}
                 </CardIcon>
                

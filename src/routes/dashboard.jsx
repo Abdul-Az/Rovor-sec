@@ -16,6 +16,7 @@ import Icons from "views/Icons/Icons.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 import AllusersP from "views/UserProfile/AllusersP.jsx";
+import UserSp from "views/TableList/UserSpecefic.jsx";
 // import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.jsx";
 
 const dashboardRoutes = [
@@ -34,11 +35,11 @@ const dashboardRoutes = [
     component: AllusersP
   },
   {
-    path: "/table",
+    path: "/table/:id",
     sidebarName: "User Details",
     navbarName: "User1",
     icon: "content_paste",
-    component: TableList
+    component: UserSp
   },
   // {
   //   path: "/typography",
