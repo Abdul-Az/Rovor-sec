@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {firebaseApp} from './base';
 import Branches  from './Branches';
 import Login from '../Login/Login';
+import {Redirect} from "react-router-dom"
 
 class LoginAuth extends Component {
   constructor() {
@@ -30,7 +31,7 @@ class LoginAuth extends Component {
   }
   render() {
     return (
-     <div>{this.state.user ?  (<div><Branches /></div>) : (<Login />)}</div>
+     <div>{this.state.user ?  (<Redirect to='/dashboard' />) : (<Login />)}</div>
     )}
 }
 

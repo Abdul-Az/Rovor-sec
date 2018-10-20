@@ -82,6 +82,7 @@ export default class Login extends Component {
            {/* <input type = "button" value = "log in" bsSize="large"  block onClick={this.loginHandle}/> */}
         
            <Button
+            bsStyle="primary"
             block
             bsSize="large"
             onClick={this.login}
