@@ -179,7 +179,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={6}>
             <Card chart>
             <CardHeader color="info">
-                <h4 className={classes.cardTitleWhite}>Total Users Categorization</h4>
+                <h4 className={classes.cardTitleWhite}>Total Ride Types</h4>
                 {/* <p className={classes.cardCategoryWhite}>
                   New employees on 15th September, 2016
                 </p> */}
