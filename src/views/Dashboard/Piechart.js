@@ -17,9 +17,9 @@ class Piechart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            safe : [],
-            moderate : [],
-            unsafe : [],
+            safe : 0,
+            moderate : 0,
+            unsafe : 0,
         }
     }
     
@@ -30,6 +30,7 @@ class Piechart extends React.Component {
             const tripRoutes = Data.val().tripRoute
             const tripss = Data.val().trips
             const tripSpeedss = Data.val().tripSpeeds
+            //User specefic data
             var userresult = Object.keys(Data.val().Users).map((userId) => {
                 var obj = Data.val().Users[userId]
                 obj.tripRoute = Object.assign({userId},tripRoutes[userId],)
@@ -37,37 +38,62 @@ class Piechart extends React.Component {
                 obj.tripSpeeds = Object.assign({userId},tripSpeedss[userId],)
                 return obj
             })
-            var notrips = userresult.map(user => {
-                return  Object.keys(user.trips).length - 1; 
-                
-                })
+             //for ride types (safe)
+  let safe = userresult.map(obj =>{
+    return Object.values(obj.trips).map(value => { 
+      let { userId, ...y} = obj.trips
+      return  Object.values(y).map(s => {                   
+          return s.tripMaxSpeed })})
+  })
+  var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
+       var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
+var sr = saferides.map(obj =>{return obj[0]})
+var sumsr = sr.reduce((a,b) => a+b,0)
+//(moderate)
+var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 60 && obj <= 70})}) })
+       var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
+var mr = saferides.map(obj =>{return obj[0]})
+var summr = mr.reduce((a,b) => a+b,0)
+//(unsafe)
+var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 70})}) })
+       var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
+var usr = saferides.map(obj =>{return obj[0]})
+var sumusr = usr.reduce((a,b) => a+b,0)
+
+ //doughnut
+ var ctxD = document.getElementById("doughnutChart").getContext('2d');
+ new Chart(ctxD, {
+     type: 'doughnut',
+     data: {
+         labels: ["Unsafe 25%", "Safe 55%", "Moderate 20%"],
+         datasets: [
+             {
+                 data: [sumusr, sumsr, summr],
+                 backgroundColor: ["red", "green", "yellow"],
+                 hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"]
+             }
+         ]
+     },
+     options: {
+         responsive: true
+     }
+ });
+
             this.setState({
-                Allusers : userresult,
-               
+                safe : sumsr,
+                moderate: summr,
+                unsafe:   sumusr,             
             })
+
+            // console.log(this.state.sumusr)
         }.bind(this)) 
-    
-        //doughnut
-        var ctxD = document.getElementById("doughnutChart").getContext('2d');
-        new Chart(ctxD, {
-            type: 'doughnut',
-            data: {
-                labels: ["Unsafe 25%", "Safe 55%", "Moderate 20%"],
-                datasets: [
-                    {
-                        data: [30, 80, 40],
-                        backgroundColor: ["red", "green", "yellow"],
-                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870"]
-                    }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
+        
+       
     }
     render() {
+        
         return (
+            
         <Container>
           <canvas id="doughnutChart"></canvas>
         </Container>
