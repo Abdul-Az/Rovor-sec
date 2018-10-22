@@ -46,7 +46,20 @@ class UserProfile extends React.Component {
     const { classes } = this.props;
     
     const username = this.props.users
-    // console.log(username)
+
+    let safe = username.map(obj =>{
+      return Object.values(obj.trips).map(value => { 
+        let { userId, ...y} = obj.trips
+        return  Object.values(y).map(s => {                   
+            return s.tripMaxSpeed })})
+    })
+    var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
+         var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
+    // var tripdata =  Object.values(obj.trips).map(value => { 
+    //   let { userId, ...y} = obj.trips
+    //   return  Object.values(y).map(s => {                   
+    //       return s.tripDate })})
+    // console.log(saferides)
   return (
     <div>
       <GridContainer>

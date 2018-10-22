@@ -96,6 +96,28 @@ var avgtime = Math.ceil(avg/60)
  
   var notrips = userid.map(obj =>{return Object.keys(obj.trips).length - 1})
 
+  //for ride types (safe)
+  let safe = userid.map(obj =>{
+    return Object.values(obj.trips).map(value => { 
+      let { userId, ...y} = obj.trips
+      return  Object.values(y).map(s => {                   
+          return s.tripMaxSpeed })})
+  })
+  var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
+       var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
+var sr = saferides.map(obj =>{return obj[0]})
+
+//(moderate)
+var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 60 && obj <= 70})}) })
+       var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
+var mr = saferides.map(obj =>{return obj[0]})
+
+//(unsafe)
+var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 70})}) })
+       var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
+var usr = saferides.map(obj =>{return obj[0]})
+
+
   //for username
   var usernamesp = userid.map(obj =>{return obj.Username})
     return (
@@ -132,17 +154,18 @@ var avgtime = Math.ceil(avg/60)
             <Card>
               <CardHeader color="success" stats icon>
                 <CardIcon color="success">
-                <div style={{fontSize:"30px"}}>10</div>
+                <div style={{fontSize:"30px"}}>{sr}</div>
+
                
                 {/* <Icon>mood</Icon> */}
                 </CardIcon>
                 <CardIcon color="warning">
-                <div style={{fontSize:"30px"}}>12</div>
+                <div style={{fontSize:"30px"}}>{mr}</div>
                 
                 {/* <Icon>sentiment_very_dissatisfied</Icon> */}
                 </CardIcon>
                 <CardIcon color="danger">
-                <div style={{fontSize:"30px"}}>3</div>
+                <div style={{fontSize:"30px"}}>{usr}</div>
                
                 {/* <Icon>mood_bad</Icon> */}
                 </CardIcon>
