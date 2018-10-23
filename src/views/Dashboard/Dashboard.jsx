@@ -305,7 +305,7 @@ class Dashboard extends React.Component {
               </CardHeader>
               <CardBody>
                 <Table 
-                  root={{fontSize: "40px"}}
+                  root={{fontSize: "80px"}}
                   tableHeaderColor="danger"
                   tableHead={["Rank", "Name", "Rides", "Bike"]}
                   tableData={ [
