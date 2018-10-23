@@ -4,6 +4,7 @@ import firebase from "firebase";
 import {firebaseApp} from "../../components/firebase/base";
 import database from "firebase/database";
 import base from "../../components/firebase/base";
+import _ from "lodash";
 class LeaderBoard extends React.Component {
 
     constructor() {
@@ -30,29 +31,29 @@ class LeaderBoard extends React.Component {
   })
   
   //(total rides)
-  var safelist = safe.map(obj => {return obj.map(obj => {return obj.map(obj => 
-    {
-        return obj
-    //     var types = {
-    //         safe : [],
-    //         moderate : [],
-    //         unsafe : [],
-    //     }
-    //     if( obj <= 60)
-    //     types.safe.push(obj).length
-    //     else if( obj > 60 && obj <= 70)
-    //     types.moderate.push(obj).length
-    //     else if(obj < 400)
-    //     types.unsafe.push(obj).length
-    //     // console.log(safe)
+//   var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => 
+//     {
+//         return obj <= 60
+//     //     var types = {
+//     //         safe : [],
+//     //         moderate : [],
+//     //         unsafe : [],
+//     //     }
+//     //     if( obj <= 60)
+//     //     types.safe.push(obj).length
+//     //     else if( obj > 60 && obj <= 70)
+//     //     types.moderate.push(obj).length
+//     //     else if(obj < 400)
+//     //     types.unsafe.push(obj).length
+//     //     // console.log(safe)
         
-    //    return  types
-    }
+//     //    return  types
+//     }
     
     
-    )}) })
+//     )}) })
 
-    console.log(safelist)
+//     console.log(safelist)
     // var mylist = []
     // for (var i = 0 ; i < Object.keys(safelist).length ; i++ )
     // {
@@ -91,35 +92,54 @@ class LeaderBoard extends React.Component {
 
 
 //flag of (safe, moderate, unsafe)
-function tag() {
-    let safe = userresult.map(obj =>{
-        return Object.values(obj.trips).map(value => { 
-          let { userId, ...y} = obj.trips
-          return  Object.values(y).map(s => {                   
-              return s.tripMaxSpeed })})
-      })
+// function tag() {
+    // let safe = userresult.map(obj =>{
+    //     return Object.values(obj.trips).map(value => { 
+    //       let { userId, ...y} = obj.trips
+    //       return  Object.values(y).map(s => {                   
+    //           return s.tripMaxSpeed })})
+    //   })
      //(safe)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
 var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
 var sr = saferides.map(obj =>{return obj[0]})
-var sumsr = sr.reduce((a,b) => a+b,0)
+console.log(sr)
+// var sumsr = sr.reduce((a,b) => a+b,0)
 //(moderate)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 60 && obj <= 70})}) })
   var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
 var mr = saferides.map(obj =>{return obj[0]})
-var summr = mr.reduce((a,b) => a+b,0)
+console.log(mr)
+// var summr = mr.reduce((a,b) => a+b,0)
 //(unsafe)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 70})}) })
 var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
 var usr = saferides.map(obj =>{return obj[0]})
-var sumusr = usr.reduce((a,b) => a+b,0)
+// var sumusr = usr.reduce((a,b) => a+b,0)
+console.log(usr)
 
-    if (sumsr > summr && sumusr)
-    return ("safe")
-    else if (summr > sumsr && sumusr)
-    return ("moderate")
-    else return ("unsafe")
+var types = {
+    safe: sr,
+    moderate: mr,
+    unsafe: usr,
 }
+var typrofuser = Object.entries(types).map(obj =>
+{
+    return console.log(obj)
+    //  return obj.safe < obj.moderate && obj.safe < obj.unsafe
+    
+    //  else if(obj.safe > obj.moderate && obj.safe > obj.unsafe)
+    //  return ("safe")
+    //  else return ("unsafe")
+})
+// let combined = _.flatMapDepth([...sr], [...mr], [...usr], 3);
+console.log(typrofuser)
+    // if (sr.length > mr.length && usr.length)
+    // return ("safe")
+    // else if (mr.length > sr.length && usr.length)
+    // return ("moderate")
+    // else return ("unsafe")
+// }
 // console.log(tag())
 
 
