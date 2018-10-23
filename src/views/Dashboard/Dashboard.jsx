@@ -44,6 +44,7 @@ import {
 } from "variables/charts";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
+import LeaderBoard from "./LeaderBoard";
 
 class Dashboard extends React.Component {
   constructor(props){
@@ -304,17 +305,7 @@ class Dashboard extends React.Component {
                 </p> */}
               </CardHeader>
               <CardBody>
-                <Table 
-                  root={{fontSize: "80px"}}
-                  tableHeaderColor="danger"
-                  tableHead={["Rank", "Name", "Rides", "Bike"]}
-                  tableData={ [
-                    ["1", "User5", "8", "Pulsar"],
-                    ["2", "User7", "20", "Honda City"],
-                    ["3", "User10", "50", "Discover"],
-                    ["4", "User3", "5", "Duke"]
-                  ]}
-                />
+                <LeaderBoard />
               </CardBody>
             </Card>
           </GridItem>
