@@ -121,22 +121,72 @@ function determineFlag(arr1,arr2,arr3){
     let userstatus =   determineFlag(arr1,arr2,arr3)
 
 //     const obj = {};
+
+function addStatus(objectName, arr){
+	for(var i = 0 ; i < arr.length ; i++){
+		objectName[i].status = arr[i];
+    }
+	return objectName;
+}
+
+var finalUserResult = addStatus(userresult, userstatus);
 // var status
 //     for (const key of userstatus) {
 //          obj[key] = status;
 //     }
-//           console.log(obj)
+          console.log(finalUserResult)
 
-        //   for (const stat in userstatus){
-          var res = userresult.map((obj) => {
-               userstatus
-                    // console.log(userstatus)
-                  return Object.assign( {userstatus} , obj)
-                
+    //     //   for (const stat in userstatus){
+    //         var res =  userresult.map((obj) => {
+    //          for(const i of userstatus.entries() )
+    //          {
+    //              return Object.assign({i} , obj)
+            
+    //          }
+    //         })
+
         
-        })
+    //    console.log(res)
+        
     
-       console.log(res)
+
+        //  var adding = addarray(userresult, userstatus)
+
+        // var result = arrOfObj.map(function(el) {
+        //     var o = Object.assign({}, el);
+        //     o.isActive = true;
+        //     return o;
+        //   })
+
+        //   var res = userresult.map((obj) => {
+        
+        //         var o = Object.assign( {} , obj)
+        //         o.tatus = userstatus.map(el => {return el})
+        //        return o;
+        //     //    console.log(o)
+        // })
+
+        // function injectKeyValueInArray (array, keyValues){
+        //     return new Promise((resolve, reject) => {
+        //         if (!array.length)
+        //             return resolve(array);
+    
+        //         array.forEach((object) => {
+        //             for (let key in keyValues) {
+        //                 object[key] = keyValues[key]
+        //             }
+        //         });
+        //         resolve(array);
+        //     })
+        // };
+        // injectKeyValueInArray(userstatus,userresult).then((newArrOfObj)=>{
+        //     console.log(newArrOfObj);
+        // });
+//         const arrayToObject = (arr, keyField) =>
+//   Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})))
+
+//   console.log(arrayToObject(userstatus))
+    //    console.log(res)
         //   let users = Object.assign({}, userstatus)
         //   console.log(users)
         }) 
