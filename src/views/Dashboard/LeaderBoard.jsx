@@ -49,25 +49,114 @@ var arr3 = saferides.map(obj =>{return obj[0]})
 // var sumusr = usr.reduce((a,b) => a+b,0)
 console.log(arr3)
 
+//Function that returns the result
 
+function determineFlag(arr1,arr2,arr3){
 
+    var flag, max, startFlag = [];
+    
+    for(var i=0;i<arr1.length;i++){
+    
+    //if all three index values are same give priority to safe
+    
+    if(arr1[i] === arr2[i] && arr1[i] === arr3[i]){
+    
+    flag = 1;
+    
+            }else{
+    
+    //compare 2 arrays safe and moderate
+    
+    if(arr1[i] > arr2[i]){
+    
+    flag = 1;
+    
+    max = arr1[i];
+    
+            }else{
+    
+    flag = 2;
+    
+    max = arr2[i];
+    
+                    }
+    
+    //Now we got max of safe and moderate now compare max with unsafe
+    
+    if(arr3[i] > max){
+    
+    flag = 3;
+    
+    max = arr3[i];
+    
+                    }
+    
+            }
+    
+    //flag 1 = safe, 2 = moderate and 3 = unsafe push these values into startFlag
+    
+    switch(flag){
+    
+                case 1 : startFlag.push("safe");
+    
+     break;
+    
+                case 2 : startFlag.push("moderate");
+    
+     break;
+    
+                case 3 : startFlag.push("unsafe");
+    
+     break;
+    
+            }
+    
+        }
+    
+    //return the results
+    
+    return startFlag;
+    
+    }
+    let userstatus =   determineFlag(arr1,arr2,arr3)
 
+//     const obj = {};
+// var status
+//     for (const key of userstatus) {
+//          obj[key] = status;
+//     }
+//           console.log(obj)
 
-            // console.log(this.state.sumusr)
-        }) 
+        //   for (const stat in userstatus){
+          var res = userresult.map((obj) => {
+               userstatus
+                    // console.log(userstatus)
+                  return Object.assign( {userstatus} , obj)
+                
         
+        })
+    
+       console.log(res)
+        //   let users = Object.assign({}, userstatus)
+        //   console.log(users)
+        }) 
+
+    //    let username =  userresult.map(obj =>{
+    //     return Object.values(obj.User).map(value => { 
        
     }
 
 
     render() {
+
+
         return (
     <Table 
     root={{fontSize: "80px"}}
     tableHeaderColor="danger"
-    tableHead={["Rank", "Name", "Rides", "Bike"]}
+    tableHead={["Rank", "Name", "Status", "Rides"]}
     tableData={ [
-      ["1", "User5", "8", "Pulsar"],
+      ["1", "g", "8", "Pulsar"],
       ["2", "User7", "20", "Honda City"],
       ["3", "User10", "50", "Discover"],
       ["4", "User3", "5", "Duke"]
