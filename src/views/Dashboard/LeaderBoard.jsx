@@ -30,117 +30,26 @@ class LeaderBoard extends React.Component {
           return s.tripMaxSpeed })})
   })
   
-  //(total rides)
-//   var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => 
-//     {
-//         return obj <= 60
-//     //     var types = {
-//     //         safe : [],
-//     //         moderate : [],
-//     //         unsafe : [],
-//     //     }
-//     //     if( obj <= 60)
-//     //     types.safe.push(obj).length
-//     //     else if( obj > 60 && obj <= 70)
-//     //     types.moderate.push(obj).length
-//     //     else if(obj < 400)
-//     //     types.unsafe.push(obj).length
-//     //     // console.log(safe)
-        
-//     //    return  types
-//     }
-    
-    
-//     )}) })
 
-//     console.log(safelist)
-    // var mylist = []
-    // for (var i = 0 ; i < Object.keys(safelist).length ; i++ )
-    // {
-    //     var myList = safelist;
-    //     for(var j=3;j<Object.keys(myList).length;j++){
-    //         if(myList[j]!=undefined){
-    //             for(var k=0;k<Object.keys(myList[j]).length;k++){
-    //                 var mylistTemp = myList[j][k];
-    //                 for(var l=0;l<Object.keys(mylistTemp).length;l++){
-    //                     var mylistTemp2 = myList[j][k][l]["safe"];
-    //                     console.log(mylistTemp2);
-    //                 }
-    //             }
-    //         }
-    //         //console.log(mylistTemp)
-    //     }
-    // }
-
-//    console.log(mylist["safe"])
-    // console.log(safelist.concat(types.safe, types.moderate, types.unsafe)
-    // console.log(safelist)
-//        var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
-// var sr = saferides.map(obj =>{return obj})
-// console.log(sr)
-// var sumsr = sr.reduce((a,b) => a+b,0)
-// //(moderate)
-// var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 60 && obj <= 70})}) })
-//        var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
-// var mr = saferides.map(obj =>{return obj[0]})
-// var summr = mr.reduce((a,b) => a+b,0)
-// //(unsafe)
-// var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 70})}) })
-//        var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
-// var usr = saferides.map(obj =>{return obj[0]})
-// var sumusr = usr.reduce((a,b) => a+b,0)
-
-
-//flag of (safe, moderate, unsafe)
-// function tag() {
-    // let safe = userresult.map(obj =>{
-    //     return Object.values(obj.trips).map(value => { 
-    //       let { userId, ...y} = obj.trips
-    //       return  Object.values(y).map(s => {                   
-    //           return s.tripMaxSpeed })})
-    //   })
-     //(safe)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
 var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
-var sr = saferides.map(obj =>{return obj[0]})
-console.log(sr)
+var arr1 = saferides.map(obj =>{return obj[0]})
+console.log(arr1)
 // var sumsr = sr.reduce((a,b) => a+b,0)
 //(moderate)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 60 && obj <= 70})}) })
   var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
-var mr = saferides.map(obj =>{return obj[0]})
-console.log(mr)
+var arr2 = saferides.map(obj =>{return obj[0]})
+console.log(arr2)
 // var summr = mr.reduce((a,b) => a+b,0)
 //(unsafe)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 70})}) })
 var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
-var usr = saferides.map(obj =>{return obj[0]})
+var arr3 = saferides.map(obj =>{return obj[0]})
 // var sumusr = usr.reduce((a,b) => a+b,0)
-console.log(usr)
+console.log(arr3)
 
-var types = {
-    safe: sr,
-    moderate: mr,
-    unsafe: usr,
-}
-var typrofuser = Object.entries(types).map(obj =>
-{
-    return console.log(obj)
-    //  return obj.safe < obj.moderate && obj.safe < obj.unsafe
-    
-    //  else if(obj.safe > obj.moderate && obj.safe > obj.unsafe)
-    //  return ("safe")
-    //  else return ("unsafe")
-})
-// let combined = _.flatMapDepth([...sr], [...mr], [...usr], 3);
-console.log(typrofuser)
-    // if (sr.length > mr.length && usr.length)
-    // return ("safe")
-    // else if (mr.length > sr.length && usr.length)
-    // return ("moderate")
-    // else return ("unsafe")
-// }
-// console.log(tag())
+
 
 
 

@@ -3,6 +3,7 @@ import { Carousel } from 'react-bootstrap';
 // import {LineChart} from "react-d3-components";
 // react plugin for creating charts
 // import DisplayContainer from "./Chart";
+import SimpleMap from "./Gmaps";
 
 
 class ControlledCarousel extends React.Component {
@@ -49,11 +50,15 @@ var biPolarBarChartOptions = {
       return (
         <Carousel
           activeIndex={index}
-          direction={direction}
+          // direction={direction}
           onSelect={this.handleSelect}
         >
           <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src={require("../../assets/img/blackspot.PNG" )} />
+            {/* <img width={900} height={500} alt="900x500" src={require("../../assets/img/blackspot.PNG" )} /> */}
+            <div width={900} height={500}>
+            <SimpleMap />
+              </div>
+           
             <Carousel.Caption>
               
               
