@@ -29,7 +29,7 @@ class LeaderBoard extends React.Component {
       return  Object.values(y).map(s => {                   
           return s.tripMaxSpeed })})
   })
-  
+ var totalrides = safe.map(rides => { return rides.length - 1}) 
 
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
 var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
@@ -121,6 +121,13 @@ function determineFlag(arr1,arr2,arr3){
     let userstatus =   determineFlag(arr1,arr2,arr3)
 
 //     const obj = {};
+// var arr = [1,2,3,2]
+// for( let a of arr )
+// {
+//     console.log(arr)
+// }
+
+
 
 function addStatus(objectName, arr){
 	for(var i = 0 ; i < arr.length ; i++){
@@ -129,12 +136,23 @@ function addStatus(objectName, arr){
 	return objectName;
 }
 
+function addtotalrides(objectName, arr){
+	for(var i = 0 ; i < arr.length ; i++){
+		objectName[i].totalrides = arr[i];
+    }
+	return objectName;
+}
 var finalUserResult = addStatus(userresult, userstatus);
+var addtotal = addtotalrides(userresult , totalrides)
+// console.log(addtotal)
+
+let sorted =  _.orderBy(addtotal, ['totalrides'], ['desc'])
+console.log(sorted)
 // var status
 //     for (const key of userstatus) {
 //          obj[key] = status;
 //     }
-          console.log(finalUserResult)
+        //   console.log(finalUserResult)
 
     //     //   for (const stat in userstatus){
     //         var res =  userresult.map((obj) => {
@@ -198,11 +216,25 @@ var finalUserResult = addStatus(userresult, userstatus);
 
 
     render() {
-
+        // const { classes } = this.props;
+        const styles = theme => ({
+            root: {
+                width: '100%',
+                marginTop: theme.spacing.unit * 3,
+                overflowX: 'auto',
+            },
+            table: {
+                minWidth: 700
+            },
+            tablecell: {
+                fontSize: '40pt'
+            }
+        }); 
 
         return (
     <Table 
-    root={{fontSize: "80px"}}
+    
+    // style={{fontSize: "80px"}}
     tableHeaderColor="danger"
     tableHead={["Rank", "Name", "Status", "Rides"]}
     tableData={ [
