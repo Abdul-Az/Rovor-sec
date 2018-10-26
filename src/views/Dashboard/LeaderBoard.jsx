@@ -1,14 +1,52 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Table from "components/Table/Table.jsx";
 import firebase from "firebase";
 import {firebaseApp} from "../../components/firebase/base";
 import database from "firebase/database";
 import base from "../../components/firebase/base";
 import _ from "lodash";
+import PropTypes from 'prop-types';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const CustomTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+  row: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
+    },
+  },
+});
+
 class LeaderBoard extends React.Component {
 
     constructor() {
        super();
+       this.state = {
+           userresult : []
+       }
         const UserRef = firebase.database().ref().on("value", function(Data){
             
             const tripRoutes = Data.val().tripRoute
@@ -34,20 +72,20 @@ class LeaderBoard extends React.Component {
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
 var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
 var arr1 = saferides.map(obj =>{return obj[0]})
-console.log(arr1)
+// console.log(arr1)
 // var sumsr = sr.reduce((a,b) => a+b,0)
 //(moderate)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 60 && obj <= 70})}) })
   var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
 var arr2 = saferides.map(obj =>{return obj[0]})
-console.log(arr2)
+// console.log(arr2)
 // var summr = mr.reduce((a,b) => a+b,0)
 //(unsafe)
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj > 70})}) })
 var saferides = safelist.map(obj => {return obj.map(obj => {return obj.length})})
 var arr3 = saferides.map(obj =>{return obj[0]})
 // var sumusr = usr.reduce((a,b) => a+b,0)
-console.log(arr3)
+// console.log(arr3)
 
 //Function that returns the result
 
@@ -148,10 +186,13 @@ var addtotal = addtotalrides(userresult , totalrides)
 
 let sorted =  _.orderBy(addtotal, ['totalrides'], ['desc'])
 console.log(sorted)
-// var status
+// // var status
 //     for (const key of userstatus) {
 //          obj[key] = status;
 //     }
+this.setState({
+    userresult : sorted
+})
         //   console.log(finalUserResult)
 
     //     //   for (const stat in userstatus){
@@ -216,35 +257,31 @@ console.log(sorted)
 
 
     render() {
-        // const { classes } = this.props;
-        const styles = theme => ({
-            root: {
-                width: '100%',
-                marginTop: theme.spacing.unit * 3,
-                overflowX: 'auto',
-            },
-            table: {
-                minWidth: 700
-            },
-            tablecell: {
-                fontSize: '40pt'
-            }
-        }); 
+        const { classes } = this.props;
+        var sortedusers = this.state.userresult
 
         return (
-    <Table 
-    
-    // style={{fontSize: "80px"}}
-    tableHeaderColor="danger"
-    tableHead={["Rank", "Name", "Status", "Rides"]}
-    tableData={ [
-      ["1", "g", "8", "Pulsar"],
-      ["2", "User7", "20", "Honda City"],
-      ["3", "User10", "50", "Discover"],
-      ["4", "User3", "5", "Duke"]
-    ]}
-    />
-
+            <Fragment>
+            <Paper className={classes.root}>
+            <Table className={classes.table}>
+            <TableBody>
+            {sortedusers.map((row, index) => {
+              return (
+                <TableRow className={classes.row} >
+                  <CustomTableCell component="th" scope="row">
+                    {row.index}
+                  </CustomTableCell>
+                  <CustomTableCell >{row.Username}</CustomTableCell>
+                  <CustomTableCell >{row.status}</CustomTableCell>
+                  <CustomTableCell numeric>{row.totalrides}</CustomTableCell>
+                  {/* <CustomTableCell numeric>{row.protein}</CustomTableCell> */}
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Paper>
+</Fragment>
 
         )
     }

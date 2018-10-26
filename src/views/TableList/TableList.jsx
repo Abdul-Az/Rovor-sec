@@ -46,7 +46,7 @@ const styles = {
 
 function TableList(props) {
   const { classes } = props;
-  console.log(props)
+  // console.log(props)
   const username = props.users
   // console.log(props.match.params.id)
   // const user = props.uid;

@@ -117,7 +117,7 @@ TripsRef.on("value", function(Data){
 //   var Tripsd = Object.keys(Data.val())
 //   var det = Tripsd.flat()
 // console.log(Data.val())
-console.log(result1)
+// console.log(result1)
 // console.log(tripRoutes['8saB3qEfo7ZE7nwPJ7vDackj33h1'])
 })
 

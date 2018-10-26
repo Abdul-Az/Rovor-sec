@@ -81,7 +81,7 @@ var notrips = userresult.map(user => {
   return  Object.keys(user.trips).length - 1; 
   
   })
-console.log(notrips)
+// console.log(notrips)
 })
 
 
