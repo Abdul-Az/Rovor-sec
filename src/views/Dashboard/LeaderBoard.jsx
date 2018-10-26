@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Table from "components/Table/Table.jsx";
+// import Table from "components/Table/Table.jsx";
 import firebase from "firebase";
 import {firebaseApp} from "../../components/firebase/base";
 import database from "firebase/database";
@@ -45,28 +45,51 @@ class LeaderBoard extends React.Component {
     constructor() {
        super();
        this.state = {
-           userresult : []
+           Allusers : []
        }
-        const UserRef = firebase.database().ref().on("value", function(Data){
-            
-            const tripRoutes = Data.val().tripRoute
-            const tripss = Data.val().trips
-            const tripSpeedss = Data.val().tripSpeeds
-            //User specefic data
-            var userresult = Object.keys(Data.val().Users).map((userId) => {
-                var obj = Data.val().Users[userId]
-                obj.tripRoute = Object.assign({userId},tripRoutes[userId],)
-                obj.trips = Object.assign({userId},tripss[userId],)
-                obj.tripSpeeds = Object.assign({userId},tripSpeedss[userId],)
-                return obj
-            })
+    }
+
+    componentDidMount(){
+
+      const UserRef = firebase.database().ref().on("value", function(Data){
+          
+          const tripRoutes = Data.val().tripRoute
+          const tripss = Data.val().trips
+          const tripSpeedss = Data.val().tripSpeeds
+          var userresult = Object.keys(Data.val().Users).map((userId) => {
+              var obj = Data.val().Users[userId]
+              obj.tripRoute = Object.assign({userId},tripRoutes[userId],)
+              obj.trips = Object.assign({userId},tripss[userId],)
+              obj.tripSpeeds = Object.assign({userId},tripSpeedss[userId],)
+              return obj
+          })
+          var notrips = userresult.map(user => {
+              return  Object.keys(user.trips).length - 1; 
+              
+              })
+          this.setState({
+              Allusers : userresult,
+             
+          })
+      }.bind(this))   
+}
+      
+   
+  //  console.log(userresult)
+
+    render() {
+
+         //    this.sorted = this.sorted.bind(this)
+        
+
              //for ride types (safe)
-  let safe = userresult.map(obj =>{
+  let safe = this.state.Allusers.map(obj =>{
     return Object.values(obj.trips).map(value => { 
       let { userId, ...y} = obj.trips
       return  Object.values(y).map(s => {                   
           return s.tripMaxSpeed })})
   })
+  console.log(safe)
  var totalrides = safe.map(rides => { return rides.length - 1}) 
 
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
@@ -180,94 +203,36 @@ function addtotalrides(objectName, arr){
     }
 	return objectName;
 }
-var finalUserResult = addStatus(userresult, userstatus);
-var addtotal = addtotalrides(userresult , totalrides)
+var finalUserResult = addStatus(this.state.Allusers, userstatus);
+var addtotal = addtotalrides(this.state.Allusers , totalrides)
 // console.log(addtotal)
 
 let sorted =  _.orderBy(addtotal, ['totalrides'], ['desc'])
 console.log(sorted)
-// // var status
-//     for (const key of userstatus) {
-//          obj[key] = status;
-//     }
-this.setState({
-    userresult : sorted
-})
-        //   console.log(finalUserResult)
 
-    //     //   for (const stat in userstatus){
-    //         var res =  userresult.map((obj) => {
-    //          for(const i of userstatus.entries() )
-    //          {
-    //              return Object.assign({i} , obj)
-            
-    //          }
-    //         })
-
-        
-    //    console.log(res)
-        
     
 
-        //  var adding = addarray(userresult, userstatus)
-
-        // var result = arrOfObj.map(function(el) {
-        //     var o = Object.assign({}, el);
-        //     o.isActive = true;
-        //     return o;
-        //   })
-
-        //   var res = userresult.map((obj) => {
-        
-        //         var o = Object.assign( {} , obj)
-        //         o.tatus = userstatus.map(el => {return el})
-        //        return o;
-        //     //    console.log(o)
-        // })
-
-        // function injectKeyValueInArray (array, keyValues){
-        //     return new Promise((resolve, reject) => {
-        //         if (!array.length)
-        //             return resolve(array);
-    
-        //         array.forEach((object) => {
-        //             for (let key in keyValues) {
-        //                 object[key] = keyValues[key]
-        //             }
-        //         });
-        //         resolve(array);
-        //     })
-        // };
-        // injectKeyValueInArray(userstatus,userresult).then((newArrOfObj)=>{
-        //     console.log(newArrOfObj);
-        // });
-//         const arrayToObject = (arr, keyField) =>
-//   Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})))
-
-//   console.log(arrayToObject(userstatus))
-    //    console.log(res)
-        //   let users = Object.assign({}, userstatus)
-        //   console.log(users)
-        }) 
-
-    //    let username =  userresult.map(obj =>{
-    //     return Object.values(obj.User).map(value => { 
-       
-    }
-
-
-    render() {
-        const { classes } = this.props;
-        var sortedusers = this.state.userresult
+    //    console.log(this)
+        // const { classes } = this.props;
+        var sortedusers = sorted;
 
         return (
             <Fragment>
-            <Paper className={classes.root}>
-            <Table className={classes.table}>
+            <Paper >
+            <Table >
+            <TableHead>
+          <TableRow>
+            <CustomTableCell>Rank</CustomTableCell>
+            <CustomTableCell >Username</CustomTableCell>
+            <CustomTableCell >Status</CustomTableCell>
+            <CustomTableCell numeric>Rides</CustomTableCell>
+            {/* <CustomTableCell numeric>Protein (g)</CustomTableCell> */}
+          </TableRow>
+        </TableHead>
             <TableBody>
             {sortedusers.map((row, index) => {
               return (
-                <TableRow className={classes.row} >
+                <TableRow  >
                   <CustomTableCell component="th" scope="row">
                     {row.index}
                   </CustomTableCell>
