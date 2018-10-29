@@ -1,7 +1,7 @@
 // import React from "react";
 // import { Carousel } from 'react-bootstrap';
-import "~slick-carousel/slick/slick.css"; 
-import "~slick-carousel/slick/slick-theme.css";
+// import "~slick-carousel/slick/slick.css"; 
+// import "~slick-carousel/slick/slick-theme.css";
 // import {LineChart} from "react-d3-components";
 // react plugin for creating charts
 // import DisplayContainer from "./Chart";
@@ -20,7 +20,7 @@ export default class ControlledCarousel extends Component {
     };
     return (
       <div>
-        <h2> Single Item</h2>
+        {/* <h2> Single Item</h2> */}
         <Slider {...settings}>
           <div>
           <SimpleMap />
@@ -45,7 +45,7 @@ export default class ControlledCarousel extends Component {
     );
   }
 }
-export default ControlledCarousel
+// export default ControlledCarousel
 
 // class ControlledCarousel extends React.Component {
 //     constructor(props, context) {

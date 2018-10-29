@@ -240,8 +240,10 @@ var usr = saferides.map(obj =>{return obj[0]})
               Here is a subtitle for this table
             </p> */}
           </CardHeader>
-          <CardBody>
+          <CardBody plain>
+            {/* <div style = {{ width: "800px", height: "100px"}}> */}
           <ControlledCarousel />
+          {/* </div> */}
           </CardBody>
         </Card>
       </GridItem >
