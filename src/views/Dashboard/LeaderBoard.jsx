@@ -89,7 +89,7 @@ class LeaderBoard extends React.Component {
       return  Object.values(y).map(s => {                   
           return s.tripMaxSpeed })})
   })
-  console.log(safe)
+  // console.log(safe)
  var totalrides = safe.map(rides => { return rides.length - 1}) 
 
 var safelist = safe.map(obj => {return obj.map(obj => {return obj.filter(obj => {return obj <= 60})}) })
@@ -216,7 +216,7 @@ var addsafe = addsaferides(this.state.Allusers, arr1)
 // console.log(addtotal)
 
 let sorted =  _.orderBy(addtotal, ['totalrides'], ['desc'])
-console.log(sorted)
+// console.log(sorted)
 
     
 
