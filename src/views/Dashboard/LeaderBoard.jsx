@@ -203,8 +203,16 @@ function addtotalrides(objectName, arr){
     }
 	return objectName;
 }
+
+function addsaferides(objectName, arr){
+	for(var i = 0 ; i < arr.length ; i++){
+		objectName[i].saferides = arr[i];
+    }
+	return objectName;
+}
 var finalUserResult = addStatus(this.state.Allusers, userstatus);
 var addtotal = addtotalrides(this.state.Allusers , totalrides)
+var addsafe = addsaferides(this.state.Allusers, arr1)
 // console.log(addtotal)
 
 let sorted =  _.orderBy(addtotal, ['totalrides'], ['desc'])
@@ -221,25 +229,26 @@ console.log(sorted)
             <Paper >
             <Table >
             <TableHead>
-          <TableRow>
-            <CustomTableCell>Rank</CustomTableCell>
+          <TableRow >
+            <CustomTableCell >Rank</CustomTableCell>
             <CustomTableCell >Username</CustomTableCell>
             <CustomTableCell >Status</CustomTableCell>
-            <CustomTableCell numeric>Rides</CustomTableCell>
-            {/* <CustomTableCell numeric>Protein (g)</CustomTableCell> */}
+            <CustomTableCell numeric>Total Rides</CustomTableCell>
+            <CustomTableCell numeric>Safe Rides</CustomTableCell>
           </TableRow>
         </TableHead>
             <TableBody>
             {sortedusers.map((row, index) => {
+              
               return (
                 <TableRow  >
-                  <CustomTableCell component="th" scope="row">
-                    {row.index}
+                  <CustomTableCell component="th" scope="row" numeric>
+                    {index+1}
                   </CustomTableCell>
                   <CustomTableCell >{row.Username}</CustomTableCell>
                   <CustomTableCell >{row.status}</CustomTableCell>
                   <CustomTableCell numeric>{row.totalrides}</CustomTableCell>
-                  {/* <CustomTableCell numeric>{row.protein}</CustomTableCell> */}
+                  <CustomTableCell numeric>{row.saferides}</CustomTableCell>
                 </TableRow>
               );
             })}
