@@ -29,7 +29,9 @@ class CheckboxList extends React.Component {
     const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
-
+ 
+    
+    
     if (currentIndex === -1) {
       newChecked.push(value);
     } else {
@@ -43,7 +45,9 @@ class CheckboxList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    var onClickHandler = () =>  {
+      alert("Message Sent!")
+   }
     return (
       <div className={classes.root}>
         <List>
@@ -61,8 +65,12 @@ class CheckboxList extends React.Component {
                 tabIndex={-1}
                 disableRipple
               />
-              <ListItemText dense primary={`Compliments ${value + 1}`} />
-              <Button variant="contained" color="primary" className={classes.button}>
+              <ListItemText dense primary={`Your life is precious for your loved ones please ride safe`} />
+              <Button variant="contained" color="primary" 
+              className={classes.button}  
+              onClick={onClickHandler}
+              value = "Message Sent!"
+              >
         Send
     
       </Button>

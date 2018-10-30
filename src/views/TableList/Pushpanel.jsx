@@ -50,6 +50,9 @@ const styles = theme => ({
 
 function DetailedExpansionPanel(props) {
   const { classes } = props;
+  var onClickHandler = () =>  {
+    alert("Message Sent!")
+ }
   return (
     <div className={classes.root}>
       <ExpansionPanel defaultExpanded>
@@ -68,7 +71,10 @@ function DetailedExpansionPanel(props) {
         {/* <Divider /> */}
         <ExpansionPanelActions>
          
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button variant="contained" color="primary" 
+        className={classes.button}
+        onClick={onClickHandler}
+        >
         Send
     
       </Button>

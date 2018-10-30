@@ -104,17 +104,17 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="success" stats icon>
                 <CardIcon color="success">
-                <div style={{fontSize:"50px"}}>8</div>
+                <div style={{fontSize:"50px"}}>11</div>
                
                 {/* <Icon>mood</Icon> */}
                 </CardIcon>
                 <CardIcon color="warning">
-                <div style={{fontSize:"50px"}}>4</div>
+                <div style={{fontSize:"50px"}}>0</div>
                 
                 {/* <Icon>sentiment_very_dissatisfied</Icon> */}
                 </CardIcon>
                 <CardIcon color="danger">
-                <div style={{fontSize:"50px"}}>3</div>
+                <div style={{fontSize:"50px"}}>1</div>
                
                 {/* <Icon>mood_bad</Icon> */}
                 </CardIcon>
@@ -273,7 +273,7 @@ class Dashboard extends React.Component {
               headerColor="warning"
               tabs={[
                 {
-                  tabName: "Safe",
+                  tabName: "Unsafe",
                   tabIcon: BugReport,
                   tabContent: (
                     <CheckboxList />
@@ -287,7 +287,7 @@ class Dashboard extends React.Component {
                   )
                 },
                 {
-                  tabName: "Unsafe",
+                  tabName: "Safe",
                   tabIcon: Cloud,
                   tabContent: (
                     <CheckboxList />
