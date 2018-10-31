@@ -65,7 +65,8 @@ var sumusr = usr.reduce((a,b) => a+b,0)
  new Chart(ctxD, {
      type: 'doughnut',
      data: {
-         labels: [`Unsafe ${sumusr}`, `Safe ${sumsr}`, `Moderate ${summr}`],
+        labels: ['Unsafe', 'Safe', 'Moderate'],
+        //  labels: [`Unsafe ${sumusr}`, `Safe ${sumsr}`, `Moderate ${summr}`],
          datasets: [
              {
                  data: [sumusr, sumsr, summr],

@@ -5,9 +5,10 @@
 // import {LineChart} from "react-d3-components";
 // react plugin for creating charts
 // import DisplayContainer from "./Chart";
-import SimpleMap from "./Gmaps";
+// import SimpleMap from "./Gmaps";
 import React, { Component } from "react";
 import Slider from "react-slick";
+import Directions from "./Gmaps";
 
 export default class ControlledCarousel extends Component {
   render() {
@@ -23,7 +24,8 @@ export default class ControlledCarousel extends Component {
         {/* <h2> Single Item</h2> */}
         <Slider {...settings}>
           <div>
-          <SimpleMap />
+          <Directions />
+          {/* <SimpleMap /> */}
           </div>
           <div>
             <h3>2</h3>
