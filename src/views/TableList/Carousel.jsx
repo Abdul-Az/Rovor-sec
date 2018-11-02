@@ -8,7 +8,8 @@
 // import SimpleMap from "./Gmaps";
 import React, { Component } from "react";
 import Slider from "react-slick";
-import Directions from "./Gmaps";
+import DoctorsMapContainer from "./Gmaps2";
+import MapWithADirectionsRenderer from "./GmapsWithDirections";
 
 export default class ControlledCarousel extends Component {
   render() {
@@ -24,7 +25,8 @@ export default class ControlledCarousel extends Component {
         {/* <h2> Single Item</h2> */}
         <Slider {...settings}>
           <div>
-          <Directions />
+          {/* <DoctorsMapContainer /> */}
+          <MapWithADirectionsRenderer />
           {/* <SimpleMap /> */}
           </div>
           <div>
