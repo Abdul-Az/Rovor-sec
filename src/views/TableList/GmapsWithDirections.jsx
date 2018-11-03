@@ -1,14 +1,13 @@
-import React from "react";
-// import { withScriptjs, withGoogleMap, GoogleMap, Marker, BicyclingLayer, DirectionsRenderer } from "react-google-maps";
 
-const { compose, withProps, lifecycle } = require("recompose");
-const {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  DirectionsRenderer,
-} = require("react-google-maps");
-const google=window.google.maps
+/*global google*/
+import React from "react";
+
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, BicyclingLayer, DirectionsRenderer } from "react-google-maps";
+import { compose, withProps, lifecycle } from "recompose";
+
+
+
+// const google=window.google.maps
 const MapWithADirectionsRenderer = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA6oNtiGFIu80weprPg0u704U1VuOCjzOo&v=3.exp&libraries=geometry,drawing,places",
