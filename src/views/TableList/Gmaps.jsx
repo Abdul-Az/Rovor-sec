@@ -30,7 +30,7 @@ const DoctorsMap = withScriptjs(withGoogleMap((props) =>{
         center={ { lat:  19.9975, lng: 73.789803 } }
         >
          {<Marker position={{ lat: 19.9975, lng: 73.789803 }} />}
-         {/* <BicyclingLayer autoUpdate /> */}
+         <BicyclingLayer autoUpdate />
          <MapWithADirectionsRenderer directions={props.directions} />
         {/* {markers} */}
       </GoogleMap>
