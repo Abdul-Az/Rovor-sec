@@ -1,8 +1,8 @@
-import * as admin from 'firebase-admin';
+// import * as admin from 'firebase-admin';
 
 // var serviceAccount = require("../../../sense-54d59-firebase-adminsdk-it4tx-c7aa8ff248.json");
 // var serviceAccount = require("./sense-54d59-firebase-adminsdk-it4tx-c7aa8ff248.json")
-import * as serviceAccount from "./sense-54d59-firebase-adminsdk-it4tx-c7aa8ff248.json";
+// import * as serviceAccount from "./sense-54d59-firebase-adminsdk-it4tx-c7aa8ff248.json";
 
 const  fcm =  
 admin.initializeApp({
