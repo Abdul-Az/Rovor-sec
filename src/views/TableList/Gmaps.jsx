@@ -29,7 +29,7 @@ const DoctorsMap = withScriptjs(withGoogleMap((props) =>{
         defaultZoom={14}
         center={ { lat:  19.9975, lng: 73.789803 } }
         >
-         {<Marker position={{ lat: 19.9975, lng: 73.789803 }} />}
+         {/* {<Marker position={{ lat: 19.9975, lng: 73.789803 }} />} */}
          <BicyclingLayer autoUpdate />
          <MapWithADirectionsRenderer directions={props.directions} />
         {/* {markers} */}
